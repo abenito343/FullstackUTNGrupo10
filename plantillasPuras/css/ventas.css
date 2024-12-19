@@ -15,7 +15,7 @@
     padding-top: 10px;
     font-family: Quicksand;
     font-size: x-large;
-    /*hacer que el nav se quede estático en el lugar*/
+      /*hacer que el nav se quede estático en el lugar*/
 }
 
 .nav a{
@@ -26,6 +26,7 @@ nav.nav ul{
     display: flex;
     list-style-type: none;
     padding-left: 550px;
+    padding-right: 25px;
     align-items: center;
     gap: 50px;
     white-space: nowrap
@@ -36,7 +37,7 @@ nav.nav ul{
     background-color: #aed6f1ed;
     width: 5%;
     height: 850px;
-    background-image: url('/img/azul.jpg');
+    background-image: url('../img/azul.jpg');
     background-size: cover
 }
 
@@ -108,6 +109,10 @@ nav.nav ul{
     margin-left: 200px;
     text-align: center;
 }
+.table a{
+    color: black;
+}
+
 .buscador{
     display: flex;
     gap: 40px;
@@ -121,4 +126,9 @@ nav.nav ul{
 
 .buscador button{
     width: 150px;
+}
+
+.total{
+    margin-top: 30px;
+    margin-left: 1450px;
 }
