@@ -1,0 +1,75 @@
+body
+{
+    background-color: #F5F5F5;
+}
+
+h1
+{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h2
+{
+    font-size: 25px;
+}
+
+h3
+{
+    font-size: 20px;
+}
+
+.input-login
+{
+    background-color: whitesmoke;
+    padding: 1%;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.pantalla-login
+{
+    background-color: white;
+    margin: 5% auto;
+}
+
+.lado-izq
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.lado-der
+{ 
+    width: auto;
+}
+
+.recordacion
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2% 0%;
+}
+
+.check-recordar
+{
+    width: 1em;
+    margin: 0% 2%;
+}
+
+.boton-login
+{
+    background-color: #007BFF;
+    border-radius: 10px;
+    padding: 2%;
+    color: white;
+    border: none;
+    width: 100%;
+}
+
+.label-formulario
+{
+    margin: 2% 0%;
+}
