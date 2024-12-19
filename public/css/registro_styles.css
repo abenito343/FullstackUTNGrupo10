@@ -1,0 +1,52 @@
+body
+{
+    background-color: #F5F5F5;
+}
+
+h1
+{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h2
+{
+    font-size: 20px;
+}
+
+.pantalla-registro
+{
+    background-color: white;
+    margin: 5% auto;
+}
+
+.formulario
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.label-formulario
+{
+    margin: 1% 0%;
+}
+
+.input-campo
+{
+    background-color: whitesmoke;
+    padding: 1%;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.boton-registro
+{
+    background-color: #007BFF;
+    border-radius: 10px;
+    padding: 1%;
+    margin: 2% 0%;
+    color: white;
+    border: none;
+    width: 50%;
+}
