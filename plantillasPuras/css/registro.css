@@ -14,20 +14,7 @@ h2
     font-size: 20px;
 }
 
-img
-{
-    width: 100%;
-}
-
-.input-campo
-{
-    background-color: whitesmoke;
-    padding: 1%;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.pantalla-login
+.pantalla-registro
 {
     background-color: white;
     margin: 5% auto;
@@ -40,17 +27,17 @@ img
     justify-content: space-evenly;
 }
 
-.recordacion
+.label-formulario
 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    margin: 1% 0%;
 }
 
-.check-recordar
+.input-campo
 {
-    width: 5%;
-    margin: 0% 5%;
+    background-color: whitesmoke;
+    padding: 1%;
+    border-radius: 5px;
+    width: 100%;
 }
 
 .boton-registro
@@ -62,9 +49,4 @@ img
     color: white;
     border: none;
     width: 50%;
-}
-
-.label-formulario
-{
-    margin: 1% 0%;
 }
