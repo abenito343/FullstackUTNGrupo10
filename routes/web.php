@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LoginController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/mostrar_usuarios', [UsuarioController::class, 'index']);
+
+Route::get('/registrar_usuario', [UsuarioController::class, 'create']);
+
+Route::get('/plantilla', function () {
+    return view('plantilla');
 });
