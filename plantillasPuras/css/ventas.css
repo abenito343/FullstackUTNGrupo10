@@ -80,16 +80,15 @@ nav.nav ul{
     width: 100%;
     margin-top: 30px;
     padding-left: 70px;
-    background-color: #eaf2f8;
-
 }
 .nav2 button{
     margin-left: 600px;
     white-space: nowrap;
     
 }
-.nav2 a{
+.nav2 h3{
     text-decoration: none;
+    color: rgb(56, 125, 235);
 }
 
 .main{
@@ -131,4 +130,40 @@ nav.nav ul{
 .total{
     margin-top: 30px;
     margin-left: 1450px;
+}
+
+.vender{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.datosProducto button{
+    margin-left: 0;
+    width: 160px;
+    white-space: nowrap
+    
+}
+.datosProducto{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 25%;
+}
+
+.carrito{
+    width: 70%;
+}
+
+.duplaBoton{
+    display: flex;
+    gap: 140px;
+}
+
+.duplaBoton2{
+    display: flex;
+    gap: 650px;
+    margin-top: 1%;
+    margin-left: 15%;
+    white-space: nowrap
 }
