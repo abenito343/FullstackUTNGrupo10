@@ -20,7 +20,7 @@ Route::get('/', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 //Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::resource("usuario", UsuarioController::class);
+Route::resource("usuario", UsuarioController::class)->middleware("auth");
 
 Route::get('/plantilla', function () {
     return view('plantilla');
