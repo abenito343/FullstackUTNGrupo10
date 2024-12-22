@@ -50,3 +50,8 @@ h2
     border: none;
     width: 50%;
 }
+
+.div-error
+{
+    color: red;
+}
