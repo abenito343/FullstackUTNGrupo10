@@ -41,16 +41,16 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a href="categorias"><i class="las la-stream"></i><p>Categorías</p></a>
+                    <a href="/categorias"><i class="las la-stream"></i><p>Categorías</p></a>
                 </li>
                 <li>
-                    <a href="productos"><i class="las la-gift"></i><p>Productos</p></a>
+                    <a href="/productos"><i class="las la-gift"></i><p>Productos</p></a>
                 </li>
                 <li>
-                    <a href="usuario"><i class="las la-user"></i><p>Usuarios</p></a>
+                    <a href="/usuario"><i class="las la-user"></i><p>Usuarios</p></a>
                 </li>
                 <li>
-                    <a href="proveedores"><i class="las la-shipping-fast"></i><p>Proveedores</p></a>
+                    <a href="/proveedores"><i class="las la-shipping-fast"></i><p>Proveedores</p></a>
                 </li>
             </ul>
         </div>

@@ -20,7 +20,7 @@
                     <h1>Gestión de Usuarios</h1>
                 </div>
                 <div class="col">
-                    <form action="./usuario/create" method="get">
+                    <form action="/usuario/create" method="get">
                         <button>+ Nuevo Usuario</button>
                     </form>
                 </div>
