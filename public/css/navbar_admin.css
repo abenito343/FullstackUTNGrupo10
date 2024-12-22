@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    font-family: Quicksand;
+    font-size: x-large;
+}
+.nav{
+    background-color:#eaf2f8;
+    height: 65px;
+    display: flex;
+    font-size:large;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+    font-family: Quicksand;
+    font-size: x-large;
+      /*hacer que el nav se quede estático en el lugar*/
+}
+
+.nav a{
+    text-decoration: none;
+    color: rgb(159, 38, 173);
+}
+
+nav.nav ul{
+    display: flex;
+    list-style-type: none;
+    padding-left: 550px;
+    padding-right: 25px;
+    align-items: center;
+    gap: 50px;
+    white-space: nowrap
+}
+
+.menu{
+    padding-top: 35px;
+    background-color: #aed6f1ed;
+    width: 5%;
+    height: 850px;
+    background-image: url('../img/violeta.jfif');
+    background-size: cover
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    list-style-type: none;
+    margin-right: 10px;
+    font-size: 60px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.menu ul p{
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 15px;
+    text-align: center;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.menu ul a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav2{
+    display: flex;
+    height: 100px;
+    display: flex;
+    font-size:large;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 70px;
+}
+.nav2 button{
+    margin-left: 600px;
+    white-space: nowrap;
+    background-color: rgb(159, 38, 173);
+    
+}
+.nav2 h3{
+    text-decoration: none;
+    color: rgb(159, 38, 173);
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenido{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.table{
+    margin-top: 100px;
+    width: 80%;
+    margin: 0 auto;
+    margin-left: 200px;
+    text-align: center;
+}
+.table a{
+    color: black;
+}
+
+.buscador{
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-bottom: 70px;
+    width: 400px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.buscador button{
+    width: 150px;
+    background-color: rgb(159, 38, 173);
+}
+
+.contenido form{
+    margin-left: 5%;
+    width: 55%;
+}
+
+.contenido boton{
+    margin-top: 3%;
+    width: 50%;
+    background-color: rgb(159, 38, 173);
+}
+
+.contenido button{
+    background-color: rgb(159, 38, 173);
+}
