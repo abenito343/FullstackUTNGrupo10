@@ -18,18 +18,13 @@ class UsuarioController extends Controller
      public function index(Request $request)
     {
         $usuarios = User::all();
-
-        /*
-        if(!auth()->check()){
-            return redirect("/");
-        }
-        */
-
+        
         $parametros = [
             "usuarios" => $usuarios
         ];
-
+            
         return view('usuario.mostrar_usuarios', $parametros);
+        
     }
     
     /**

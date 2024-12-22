@@ -31,4 +31,11 @@ class LoginController extends Controller
             return response()->redirectTo("/")->with("fail", "No pudo acreditarse al usuario");
         }
     }
+    
+    public function logout()
+    {
+        auth()->logout();
+        return response()->redirectTo("/");
+    }
+
 }

@@ -30,7 +30,7 @@
                             UserName
                         </li>
                         <li>
-                            <a href="">LogOut</a>
+                            <a href="/logout">LogOut</a>
                         </li>
                     </ul>
                 </div>

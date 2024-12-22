@@ -19,9 +19,9 @@ use App\Http\Controllers\ProductoController;
 
 Route::get('/productos', [ProductoController::class, 'index']);
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', [LoginController::class, 'index'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
-//Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::resource("usuario", UsuarioController::class)->middleware("auth");
 
