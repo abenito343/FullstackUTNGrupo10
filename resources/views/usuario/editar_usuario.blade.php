@@ -1,42 +1,66 @@
-<!DOCTYPE html>
+@include('sidebar')
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../css/login_styles.css">
-    <title>Login a sistema</title>
 </head>
 <body>
-    <div class="container pantalla-login">
+    <div class="container contenido">
+        <a href="/usuario">< Volver al menú de Usuarios</a>
         <div class="row">
-            <div class="column col-5 formulario">
-                <h1>Login</h1>
-                <h2>Ingrese sus credenciales para acceder al sistema</h2>
-                <form action="./login.blade.php" method="post">
-                    <label class="label-formulario" for="usuario">Nombre de usuario</label>
-                    <br>
-                    <input class="input-login" type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario">
-                    <br>
-                    <br>
-                    <label class="label-formulario" for="password">Contraseña</label>
-                    <br>
-                    <input class="input-login" type="password" id="password" name="password" placeholder="Ingrese su contraseña">
-                    <br>
-                    <br>
-                    <div class="recordacion">
-                        <input class="check-recordar" type="checkbox" name="recuerdame" id="recuerdame">
-                        <h3>Recuerdame</h3>
-                    </div>
-                    <br>
-                    <input class="boton-login" type="submit" value="Login">
-                    <br>
-                </form>
-            </div>
-            <div class="column col-7">
-                <img src="../images/login_img2.webp" alt="Imagen robada de login">
-            </div>
+            <div class="col"><h3>Editar Usuario</h3></div>
         </div>
+        <form action="/usuario/{{ $usuario->id }}" method="post">
+        @csrf
+        @method("PUT")
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nombre" class="text-muted mb-1"><small>Nombre:</small></label>
+                        <input value="{{ old('nombre', $usuario->nombre) }}" type="text" class="form-control form-control-lg" id="nombre" name="nombre" autocomplete="off">
+                        @error('nombre')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nombre" class="text-muted mb-1"><small>Apellido:</small></label>
+                        <input value="{{ old('apellido', $usuario->apellido) }}" type="text" class="form-control form-control-lg" id="apellido" name="apellido" autocomplete="off">
+                        @error('apellido')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="dni" class="text-muted mb-1"><small>DNI:</small></label>
+                        <input value="{{ old('dni', $usuario->dni) }}" type="text" class="form-control form-control-lg" id="dni" name="dni" autocomplete="off">
+                        @error('dni')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nickname" class="text-muted mb-1"><small>Nickname:</small></label>
+                        <input value="{{ old('nickname', $usuario->nickname) }}" type="text" class="form-control form-control-lg" id="nickname" name="nickname" autocomplete="off">
+                        @error('nickname')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary">Actualizar</button>
+        </form>
     </div>
-</body>
+                
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
 </html>

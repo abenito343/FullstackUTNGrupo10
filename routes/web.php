@@ -17,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
+//Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/mostrar_usuarios', [UsuarioController::class, 'index']);
-
-Route::get('/registrar_usuario', [UsuarioController::class, 'create']);
+Route::resource("usuario", UsuarioController::class);
 
 Route::get('/plantilla', function () {
     return view('plantilla');

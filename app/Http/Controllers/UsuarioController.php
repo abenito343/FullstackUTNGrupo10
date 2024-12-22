@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\VarDumper\VarDumper;
 
 class UsuarioController extends Controller
 {
@@ -11,9 +14,22 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function index(Request $request)
     {
-        return view('usuario.mostrar_usuarios');
+        $usuarios = User::all();
+
+        /*
+        if(!auth()->check()){
+            return redirect("/");
+        }
+        */
+
+        $parametros = [
+            "usuarios" => $usuarios
+        ];
+
+        return view('usuario.mostrar_usuarios', $parametros);
     }
     
     /**
@@ -34,7 +50,24 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = $request->validate([
+            "nombre" => ['required'],
+            "apellido" => ['required'],
+            "dni" => ['required'],
+            "nickname" => ['required'],
+            "password" => ['required', 'confirmed']
+            ], 
+            [
+            "required" => "Este campo es obligatorio",
+            "password.confirmed" => "Las contraseñas no coinciden"
+            ]
+        );
+
+        $datos["password"] = bcrypt($datos["password"]);
+
+        User::create($datos);
+    
+        return response()->redirectTo("/usuario")->with("success", "Se registro con exito!");
     }
 
     /**
@@ -45,7 +78,13 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', $id);
+
+        $parametros = [
+            "usuarios" => $user
+        ];
+
+        return view('usuario.mostrar_usuarios', $parametros);
     }
 
     /**
@@ -54,9 +93,9 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $usuario)
     {
-        //
+        return view("usuario.editar_usuario", ["usuario" => $usuario]);
     }
 
     /**
@@ -66,9 +105,27 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $usuario)
     {
-        //
+        $datos = $request->validate([
+            "nombre" => ['required'],
+            "apellido" => ['required'],
+            "dni" => ['required'],
+            "nickname" => ['required']
+            ], 
+            [
+            "required" => "Este campo es obligatorio",
+            ]
+        );
+
+        $usuario->nombre = $datos["nombre"];
+        $usuario->apellido = $datos["apellido"];
+        $usuario->dni = $datos["dni"];
+        $usuario->nickname = $datos["nickname"];
+
+        $usuario->save();
+
+        return redirect("/usuario")->with("success", "Se actualizo el usuario de forma correcta");
     }
 
     /**
@@ -77,8 +134,16 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $usuario)
     {
-        //
+        
+        $respuesta = $usuario->delete();
+
+        if($respuesta){
+            return redirect("/usuario")->with("success", "Se elimino el producto correctamente");
+        }
+        else{
+            return redirect("/usuario")->with("fail", "No se pudo eliminar");
+        }
     }
 }
