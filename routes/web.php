@@ -18,8 +18,8 @@ use App\Http\Controllers\ProductoController;
 */
 
 Route::get('/productos', [ProductoController::class, 'index']);
-Route::get('/', [LoginController::class, 'index']);
 
+Route::get('/', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 //Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -27,6 +27,8 @@ Route::resource("usuario", UsuarioController::class)->middleware("auth");
 
 Route::get('/plantilla', function () {
     return view('plantilla');
+});
 
-    
+Route::get('/navbar', function () {
+    return view('navbar_admin');
 });

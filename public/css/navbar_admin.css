@@ -4,6 +4,45 @@
     font-family: Quicksand;
     font-size: x-large;
 }
+
+button
+{
+    padding: 10px; 
+    background-color: rgb(159, 38, 173);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.25em;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0px;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table th, .product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.product-table th {
+    background-color: #f2f2f2;
+}
+
+.product-table button{
+    padding: 1%;
+    background-color: whitesmoke;
+    font-size: 1em;
+}
+
 .nav{
     background-color:#eaf2f8;
     height: 65px;
@@ -38,7 +77,7 @@ nav.nav ul{
     background-color: #aed6f1ed;
     width: 5%;
     height: 850px;
-    background-image: url('../img/violeta.jfif');
+    background-image: url('/img/violeta.jfif');
     background-size: cover
 }
 
@@ -72,27 +111,6 @@ nav.nav ul{
     color: white;
 }
 
-.nav2{
-    display: flex;
-    height: 100px;
-    display: flex;
-    font-size:large;
-    align-items: center;
-    width: 100%;
-    margin-top: 30px;
-    padding-left: 70px;
-}
-.nav2 button{
-    margin-left: 600px;
-    white-space: nowrap;
-    background-color: rgb(159, 38, 173);
-    
-}
-.nav2 h3{
-    text-decoration: none;
-    color: rgb(159, 38, 173);
-}
-
 .main{
     display: flex;
     flex-direction: row;
@@ -108,26 +126,34 @@ nav.nav ul{
     width: 80%;
     margin: 0 auto;
     margin-left: 200px;
-    text-align: center;
+    text-align: center;   
 }
+
 .table a{
     color: black;
 }
 
 .buscador{
     display: flex;
-    gap: 40px;
     margin-top: 20px;
     margin-left: 80px;
     margin-bottom: 70px;
-    width: 400px;
-    flex-direction: column;
+    width: auto;
+    flex-direction: row;
     gap: 15px;
 }
 
+.buscador input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 .buscador button{
-    width: 150px;
-    background-color: rgb(159, 38, 173);
+    width: 100px;
+    font-size: 1em;
+    padding: 5px;
 }
 
 .contenido form{
@@ -135,12 +161,12 @@ nav.nav ul{
     width: 55%;
 }
 
-.contenido boton{
-    margin-top: 3%;
-    width: 50%;
-    background-color: rgb(159, 38, 173);
+.boton-edit
+{
+    color: blue;
 }
 
-.contenido button{
-    background-color: rgb(159, 38, 173);
+.boton-delete
+{
+    color: red;
 }
