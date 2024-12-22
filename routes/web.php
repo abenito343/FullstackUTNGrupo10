@@ -3,6 +3,8 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/productos', [ProductoController::class, 'index']);
 Route::get('/', [LoginController::class, 'index']);
 
 Route::post('/login', [LoginController::class, 'login']);
@@ -24,4 +27,6 @@ Route::resource("usuario", UsuarioController::class)->middleware("auth");
 
 Route::get('/plantilla', function () {
     return view('plantilla');
+
+    
 });

@@ -13,7 +13,7 @@
         .sidebar {
             width: 75px; 
             height: 100vh;
-            background-color: #007BFF;
+            background-color: #6f42c1; 
             color: white;
             display: flex;
             flex-direction: column;
@@ -28,7 +28,7 @@
             width: 100%;
         }
         .sidebar a:hover {
-            background-color: #0056b3;
+            background-color: #5a32a3; 
         }
         .container {
             max-width: 1200px;
@@ -127,7 +127,18 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí se agregarán las filas de productos -->
+                @foreach ($productos as $producto)
+                <tr>
+                    <td>{{ $producto->nombre }}</td>
+                    <td>{{ $producto->descripcion }}</td>
+                    <td>{{ $producto->precio }}</td>
+                    <td><img src="{{ $producto->img }}" alt="{{ $producto->nombre }}" width="50"></td>
+                    <td>{{ $producto->categoria->nombre }}</td>
+                    <td>{{ $producto->proveedor->razonSocial }}</td>
+                    <td><button class="btn-edit">Editar</button></td>
+                    <td><button class="btn-delete">Eliminar</button></td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
