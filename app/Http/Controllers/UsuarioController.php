@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\VarDumper\VarDumper;
 
-class   UsuarioController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
