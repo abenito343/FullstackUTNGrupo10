@@ -1,0 +1,26 @@
+h1 
+{
+    font-size: 25px;
+}
+
+.boton-dashboard
+{
+    font-size: 20px;
+}
+
+.boton-dashboard-azul
+{
+    background-color: rgb(56, 125, 235);;
+}
+
+.contenedor-tarjetas > form
+{
+    width: 100%;
+}
+
+.contenedor-tarjetas
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

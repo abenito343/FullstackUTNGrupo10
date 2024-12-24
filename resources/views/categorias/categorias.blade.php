@@ -37,7 +37,7 @@
                 <li><a href="{{ route('categorias.index') }}"><i class="las la-stream"></i><p>Categorías</p></a></li>
                 <li><a href="{{ route('productos.index') }}"><i class="las la-gift"></i><p>Productos</p></a></li>
                 <li><a href="{{ route('usuarios.index') }}"><i class="las la-user"></i><p>Usuarios</p></a></li>
-                <li><a href="{{ route('proveedores.index') }}"><i class="las la-shipping-fast"></i><p>Proveedores</p></a></li>
+                <li><a href="{{ route('proveedor.index') }}"><i class="las la-shipping-fast"></i><p>Proveedores</p></a></li>
             </ul>
         </div>
         <div class="contenido">

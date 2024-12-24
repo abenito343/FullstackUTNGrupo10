@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProveedorController;
@@ -18,22 +18,16 @@ use App\Http\Controllers\ProveedorController;
 |
 */
 
-
-
 Route::get('/', [LoginController::class, 'index'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::resource("usuario", UsuarioController::class)->middleware("auth");
 Route::resource("usuario", UsuarioController::class)->middleware("auth")->names([
     'index' => 'usuarios.index',
 ]);
 
-
-
 Route::get('/productos', [ProductoController::class, 'index']);
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
-
 
 Route::get('/categorias', [CategoriaController::class, 'index']);
 Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
@@ -64,8 +58,8 @@ Route::get('/plantilla', function () {
     return view('plantilla');
 });
 
-Route::get('/navbar', function () {
-    return view('navbar_admin');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
 
 Route::resource("proveedor", ProveedorController::class)->middleware("auth");
