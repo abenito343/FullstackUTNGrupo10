@@ -5,6 +5,10 @@
     font-size: x-large;
 }
 
+.btn-primary{
+    background-color: rgb(159, 38, 173);
+}
+
 button
 {
     padding: 10px; 
@@ -125,10 +129,8 @@ nav.nav ul{
     margin-top: 100px;
     width: 80%;
     margin: 0 auto;
-    margin-left: 200px;
-    text-align: center;   
+    text-align: center;
 }
-
 .table a{
     color: black;
 }
@@ -169,4 +171,51 @@ nav.nav ul{
 .boton-delete
 {
     color: red;
+}
+
+.nav2{
+    display: flex;
+    height: 100px;
+    display: flex;
+    font-size:large;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 70px;
+}
+.nav2 button{
+    margin-left: 600px;
+    white-space: nowrap;
+    background-color: rgb(159, 38, 173);   
+}
+.nav2 h3{
+    text-decoration: none;
+    color: rgb(159, 38, 173);
+}
+
+.table form button i{
+    color: black;
+}
+
+.table form button {
+    background-color: white;
+    padding: 5px 10px;  
+    height: 40px;  
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* Alinea el contenido de las celdas */
+.table td {
+    vertical-align: middle; 
+}
+
+.table form button i {
+    color: black;  
+    font-size: 30px;  
+}
+
+.nav2 form{
+    margin-right: 10%;
 }

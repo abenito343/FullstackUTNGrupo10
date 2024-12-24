@@ -4,7 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
-
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::resource("usuario", UsuarioController::class)->middleware("auth");
+Route::resource("proveedor", ProveedorController::class)->middleware("auth");
 
 Route::get('/plantilla', function () {
     return view('plantilla');
