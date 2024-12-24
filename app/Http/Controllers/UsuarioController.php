@@ -50,7 +50,8 @@ class UsuarioController extends Controller
             "apellido" => ['required'],
             "dni" => ['required'],
             "nickname" => ['required'],
-            "password" => ['required', 'confirmed']
+            "password" => ['required', 'confirmed'],
+            "rol" => ['required']
             ], 
             [
             "required" => "Este campo es obligatorio",
@@ -123,6 +124,41 @@ class UsuarioController extends Controller
         return redirect("/usuario")->with("success", "Se actualizo el usuario de forma correcta");
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password_edit(User $usuario)
+    {
+        return view("usuario.editar_password", ["usuario" => $usuario]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password_update(Request $request, User $usuario)
+    {
+        $datos = $request->validate([
+            "password" => ['required', 'confirmed']
+            ], 
+            [
+            "required" => "Este campo es obligatorio",
+            "password.confirmed" => "Las contraseñas no coinciden"
+            ]
+        );
+
+        $usuario["password"] = bcrypt($datos["password"]);
+
+        $usuario->save();
+
+        return redirect("/usuario")->with("success", "Se actualizo la contraseña de forma correcta");
+    }
     /**
      * Remove the specified resource from storage.
      *

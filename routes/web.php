@@ -23,7 +23,9 @@ Route::get('/', [LoginController::class, 'index'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::resource("usuario", UsuarioController::class)->middleware("auth");
+Route::resource("usuario", UsuarioController::class);
+Route::get('/usuario/{usuario}/password_edit', [UsuarioController::class, 'password_edit']);
+Route::post('/usuario/{usuario}/password_edit', [UsuarioController::class, 'password_update']);
 
 Route::get('/plantilla', function () {
     return view('plantilla');

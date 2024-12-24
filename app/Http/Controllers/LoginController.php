@@ -21,7 +21,6 @@ class LoginController extends Controller
             "password.required" => "Este campo es obligatorio"
         ]);
 
-        //if ($datos["usuario"] == "admin" && $datos["password"] == "admin")
         if (auth()->attempt(["nickname" => $datos["usuario"], "password" => $datos["password"]]))
         {
             return response()->redirectTo("/usuario");

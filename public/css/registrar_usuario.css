@@ -55,3 +55,10 @@ h2
 {
     color: red;
 }
+
+.campo-show
+{
+    text-align: center;
+    width: 100%;
+    font-size: 35px;
+}
