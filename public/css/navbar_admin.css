@@ -35,10 +35,14 @@ button
 .product-table th, .product-table td {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
 }
 
 .product-table th {
     background-color: #f2f2f2;
+    text-align: center;
+    max-width: 100px;
+    text-wrap: balance;
 }
 
 .product-table button{
@@ -160,7 +164,7 @@ nav.nav ul{
 
 .contenido form{
     margin-left: 5%;
-    width: 55%;
+    width: auto;
 }
 
 .boton-edit

@@ -62,6 +62,15 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="column col-6">
+                            <label class="label-formulario" for="rol">Rol</label>
+                            <select class="input-campo" id="rol" name="rol">
+                                <option value="admin">Admin</option>
+                                <option value="vendedor">Vendedor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="column">
                             <input class="boton-registro" type="submit" value="Registrar usuario">
                         </div>

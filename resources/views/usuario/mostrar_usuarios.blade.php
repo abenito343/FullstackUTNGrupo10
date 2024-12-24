@@ -39,7 +39,9 @@
                     <th>Apellido</th>
                     <th>DNI</th>
                     <th>Usuario</th>
-                    <th>Editar</th>
+                    <th>Rol</th>
+                    <th>Editar datos de usuario</th>
+                    <th>Cambiar contraseña</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -50,8 +52,14 @@
                         <td>{{ $usuario->apellido }}</td>
                         <td>{{ $usuario->dni }}</td>
                         <td>{{ $usuario->nickname }}</td>
+                        <td>{{ $usuario->rol }}</td>
                         <td>                        
                             <form action="/usuario/{{ $usuario->id }}/edit" method="get">
+                                <button class="boton-edit"><i class="las la-edit"></i></button>
+                            </form>
+                        </td>
+                        <td>                        
+                            <form action="/usuario/{{ $usuario->id }}/password_edit" method="get">
                                 <button class="boton-edit"><i class="las la-edit"></i></button>
                             </form>
                         </td>
