@@ -29,6 +29,8 @@ Route::resource("usuario", UsuarioController::class)->middleware("auth")->names(
     'index' => 'usuarios.index',
 ]);
 
+
+
 Route::get('/productos', [ProductoController::class, 'index']);
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
 
@@ -44,8 +46,6 @@ Route::resource("categorias", CategoriaController::class)->middleware("auth")->n
     'update' => 'categorias.update',
     'destroy' => 'categorias.destroy',
 ]);
-
-Route::resource("proveedores", ProveedorController::class)->middleware("auth");
 
 Route::resource("usuario", UsuarioController::class)->middleware("auth")->names([
     'index' => 'usuarios.index',
@@ -67,3 +67,5 @@ Route::get('/plantilla', function () {
 Route::get('/navbar', function () {
     return view('navbar_admin');
 });
+
+Route::resource("proveedor", ProveedorController::class)->middleware("auth");

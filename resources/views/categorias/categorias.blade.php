@@ -71,11 +71,11 @@
                             <td>{{ $categoria->nombre }}</td>
                             <td>{{ $categoria->descripcion }}</td>
                             <td><a href="{{ route('categorias.edit', $categoria) }}"><i class="las la-pen"></i></a></td>
-                            <td>
+                            <td class="iconoTabla">
                                 <form action="{{ route('categorias.destroy', $categoria) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link"><i class="las la-trash"></i></button>
+                                    <button><i class="las la-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

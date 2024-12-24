@@ -1,7 +1,7 @@
 @include('navbar_admin')
 
 <head>
-    <title>Gestion de usuarios</title>
+    <title>Gestion de Proveedores</title>
 </head>
 
 <div class="contenido">
