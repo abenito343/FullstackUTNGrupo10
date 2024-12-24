@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
 
         //if ($datos["usuario"] == "admin" && $datos["password"] == "admin")
-        if (auth()->attempt(["nickname" => $datos["usuario"], "password" => $datos["password"]]))
+        if ($datos["usuario"] == "admin" && $datos["password"] == "admin")
         {
             return response()->redirectTo("/usuario");
         }
