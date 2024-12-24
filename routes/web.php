@@ -23,6 +23,7 @@ Route::get('/', [LoginController::class, 'index'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
+<<<<<<< HEAD
 Route::resource("usuario", UsuarioController::class)->middleware("auth");
 Route::resource("usuario", UsuarioController::class)->middleware("auth")->names([
     'index' => 'usuarios.index',
@@ -47,6 +48,11 @@ Route::resource("categorias", CategoriaController::class)->middleware("auth")->n
 Route::resource("proveedores", ProveedorController::class)->middleware("auth")->names([
     'index' => 'proveedores.index',
 ]);
+=======
+Route::resource("usuario", UsuarioController::class);
+Route::get('/usuario/{usuario}/password_edit', [UsuarioController::class, 'password_edit']);
+Route::post('/usuario/{usuario}/password_edit', [UsuarioController::class, 'password_update']);
+>>>>>>> 1492e2350a7cf91bd7ee873999c08f2f9fbe1eaf
 
 Route::get('/plantilla', function () {
     return view('plantilla');
