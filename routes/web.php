@@ -4,7 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
-
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +17,36 @@ use App\Http\Controllers\ProductoController;
 |
 */
 
-Route::get('/productos', [ProductoController::class, 'index']);
+
 
 Route::get('/', [LoginController::class, 'index'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::resource("usuario", UsuarioController::class)->middleware("auth");
+Route::resource("usuario", UsuarioController::class)->middleware("auth")->names([
+    'index' => 'usuarios.index',
+]);
+
+Route::get('/productos', [ProductoController::class, 'index']);
+Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
+
+
+Route::get('/categorias', [CategoriaController::class, 'index']);
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::resource("categorias", CategoriaController::class)->middleware("auth")->names([
+    'index' => 'categorias.index',
+    'create' => 'categorias.create',
+    'store' => 'categorias.store',
+    'show' => 'categorias.show',
+    'edit' => 'categorias.edit',
+    'update' => 'categorias.update',
+    'destroy' => 'categorias.destroy',
+]);
+
+Route::resource("proveedores", ProveedorController::class)->middleware("auth")->names([
+    'index' => 'proveedores.index',
+]);
 
 Route::get('/plantilla', function () {
     return view('plantilla');
