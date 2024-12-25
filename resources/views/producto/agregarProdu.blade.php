@@ -1,121 +1,71 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@include('navbar_admin')
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestión de Productos</title>
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            display: flex;
-        }
-        .sidebar {
-            width: 75px; 
-            height: 100vh;
-            background-color: #6f42c1; 
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-        }
-        .sidebar a {
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-            text-align: center;
-            width: 100%;
-        }
-        .sidebar a:hover {
-            background-color: #5a32a3; 
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            flex-grow: 1;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .header h1 {
-            color: #007BFF; 
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .btn-submit {
-            padding: 10px 20px; 
-            background-color: rgba(16, 21, 64, 1); 
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        .horizontal-line {
-            width: 100%;
-            height: 1px;
-            background-color: #ccc;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/agregar_producto.css">
+    <title>Agregar nuevo producto</title>
 </head>
 <body>
-    <div class="sidebar">
-        <a href="#tab1">P1</a>
-        <a href="#tab2">P2</a>
-        <a href="#tab3">P3</a>
-        <a href="#tab4">P4</a>
-    </div>
-    <div class="container">
-        <div class="header">
-            <h1>Nuevo producto</h1>
+    <div class="container pantalla-registro">
+        <div class="row">
+            <div class="column formulario">
+            <a href="/producto">< Volver al menú de Productos</a>
+                <h1>Registro de producto</h1>
+                <h2>Ingrese los datos del nuevo producto</h2>
+                <form action="/producto" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="column col-6">
+                            <label class="label-formulario" for="nombre">Nombre</label>
+                            <input class="input-campo" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre del producto">
+                            @error('nombre')
+                                <div class="div-error">{{$message}}</div>
+                            @enderror
+                        </div>
+                        <div class="column col-6">
+                            <label class="label-formulario" for="descripcion">Descripción</label>
+                            <input class="input-campo" type="text" id="descripcion" name="descripcion" placeholder="Ingrese descripción del producto">
+                            @error('descripcion')
+                                <div class="div-error">{{$message}}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column col-6">
+                            <label class="label-formulario" for="precio">Precio</label>
+                            <input class="input-campo" type="text" id="precio" name="precio" placeholder="Ingrese precio del producto">
+                            @error('precio')
+                                <div class="div-error">{{$message}}</div>
+                            @enderror
+                        </div>
+                        <div class="column col-6">
+                            <label class="label-formulario" for="stock">Stock</label>
+                            <input class="input-campo" type="text" id="stock" name="stock" placeholder="Ingrese stock del producto">
+                            @error('stock')
+                                <div class="div-error">{{$message}}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column col-6">
+                            <label class="label-formulario" for="categoria">Categoría</label>
+                            <select class="input-campo" id="categoria" name="categoria">
+                                <option value="electronica">Electrónica</option>
+                                <option value="ropa">Ropa</option>
+                                <option value="alimentos">Alimentos</option>
+                                <!-- Agregar más opciones según sea necesario -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <input class="boton-registro" type="submit" value="Registrar producto">
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
         </div>
-        <div class="horizontal-line"></div>
-        <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto" required>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese una breve descripción del producto" required>
-            </div>
-            <div class="form-group">
-                <label for="categoria">Categoría</label>
-                <select id="categoria" name="categoria" required>
-                    <option value="">Seleccione una categoría</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="precio_lista">Precio Lista</label>
-                <input type="number" id="precio_lista" name="precio_lista" placeholder="Ingrese el precio de lista del producto" required>
-            </div>
-            <div class="form-group">
-                <label for="imagen">Imagen</label>
-                <input type="text" id="imagen" name="imagen" placeholder="Ingrese la URL de la imagen del producto" required>
-            </div>
-            <div class="form-group">
-                <label for="proveedor">Proveedor</label>
-                <input type="text" id="proveedor" name="proveedor" placeholder="Ingrese el nombre del proveedor del producto" required>
-            </div>
-            <button type="submit" class="btn-submit">Registrar Nuevo Producto</button>
-        </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

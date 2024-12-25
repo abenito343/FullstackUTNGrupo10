@@ -28,6 +28,10 @@ Route::resource("usuario", UsuarioController::class)->middleware("auth")->names(
 
 Route::get('/productos', [ProductoController::class, 'index']);
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
+Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
+Route::resource('productos', ProductoController::class);
+
+Route::resource('proveedores', ProveedorController::class);
 
 Route::get('/categorias', [CategoriaController::class, 'index']);
 Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
