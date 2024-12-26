@@ -19,6 +19,9 @@
                     <h3>Gestión de Usuarios</h3>
                 </div>
                 <div class="col">
+                    <button class="btn btn-primary" type="button" onclick="convertirUsuariosACSV()">Guardar CSV</button>
+                </div>
+                <div class="col">
                     <form action="/usuario/create" method="get">
                         <button class="btn btn-primary">+ Nuevo Usuario</button>
                     </form>
@@ -91,4 +94,6 @@
         <div class="alert alert-warning text-center">No se encontraron resultados</div>
     @endif
 </div>
+
+<script type="text/javascript" src="/js/exportarCSV.js"></script>
 </html>
