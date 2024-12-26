@@ -28,15 +28,13 @@ Route::resource("usuario", UsuarioController::class)->middleware("auth")->names(
     'index' => 'usuarios.index',
 ]);
 
-Route::get('/productos', [ProductoController::class, 'index']);
+/*Route::get('/productos', [ProductoController::class, 'index']);
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
 Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
-Route::resource('productos', ProductoController::class);
+Route::resource('productos', ProductoController::class);*/
 
 Route::get('/quienes-somos', [QuienesomosController::class, 'quieneSomos'])->name('quieneSomos');
 Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto');
-
-Route::resource('proveedores', ProveedorController::class);
 
 Route::get('/categorias', [CategoriaController::class, 'index']);
 Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');

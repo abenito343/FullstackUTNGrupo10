@@ -23,13 +23,22 @@ class LoginController extends Controller
 
         //if ($datos["usuario"] == "admin" && $datos["password"] == "admin")
         if (auth()->attempt(["nickname" => $datos["usuario"], "password" => $datos["password"]]))
-        {
-            return response()->redirectTo("/dashboard");
-        }
-        else 
-        {
-            return response()->redirectTo("/")->with("fail", "No pudo acreditarse al usuario");
-        }
+            {
+                $usuario = auth()->user();
+
+                if ($usuario->rol == 'admin') {
+                    return response()->redirectTo("/dashboard");
+                    
+                } elseif ($usuario->rol == 'vendedor') {
+
+                    return response()->redirectTo("/ventas");
+                }
+                
+            }
+            else 
+            {
+                return response ()->redirectTo("/")->with("fail", "No pudo acreditarse al usuario");
+            }
     }
     
     public function logout()
