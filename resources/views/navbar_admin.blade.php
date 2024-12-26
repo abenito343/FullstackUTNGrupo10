@@ -27,7 +27,8 @@
                             <a href="">¿Quiénes somos?</a>
                         </li>
                         <li>
-                            UserName
+                            
+                        {{ Auth::user()->nickname }}
                         </li>
                         <li>
                             <a href="/logout">LogOut</a>
