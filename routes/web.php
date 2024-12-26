@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\QuienesomosController;
-
+use App\Http\Controllers\ContactoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,7 @@ Route::get('/productos/create', [ProductoController::class, 'create'])->name('pr
 Route::resource('productos', ProductoController::class);
 
 Route::get('/quienes-somos', [QuienesomosController::class, 'quieneSomos'])->name('quieneSomos');
+Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto');
 
 Route::resource('proveedores', ProveedorController::class);
 
