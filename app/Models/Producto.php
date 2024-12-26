@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Sanctum\HasApiTokens;
 
 class Producto extends Model
@@ -21,12 +22,12 @@ class Producto extends Model
         'proveedor_id'  // Relación con el proveedor
     ];
 
-    public function categoria()
+    public function categoria():BelongsTo
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 
-    public function proveedor()
+    public function proveedor():BelongsTo
     {
         return $this->belongsTo(Proveedor::class, 'proveedor_id');
     }
