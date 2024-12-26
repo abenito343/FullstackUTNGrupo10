@@ -152,7 +152,6 @@ class ProductoController extends Controller
         "max" => "La imagen no debe superar los 2 MB"
     ]);
 
-    // Asignar otros campos del producto
     $producto->nombre = $request["nombre"];
     $producto->descripcion = $request["descripcion"];
     $producto->precio = $request["precio"];
@@ -160,7 +159,6 @@ class ProductoController extends Controller
     $producto->categoria_id = $request["categoria"];
     $producto->proveedor_id = $request["proveedor"];
 
-    // Verificar si se subió un nuevo archivo de imagen
     if ($request->hasFile('img') && $request->file('img')->isValid()) {
         // Obtener el archivo de imagen
         $image = $request->file('img');
