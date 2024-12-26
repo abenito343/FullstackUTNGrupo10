@@ -63,3 +63,5 @@ Route::get('/dashboard', function () {
 });
 
 Route::resource("proveedor", ProveedorController::class)->middleware("auth");
+
+Route::resource('producto', ProductoController::class)->middleware('auth');

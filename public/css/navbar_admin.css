@@ -80,7 +80,7 @@ nav.nav ul{
     padding-top: 35px;
     background-color: #aed6f1ed;
     width: 5%;
-    height: 850px;
+    height: 100%;
     background-image: url('/img/violeta.jfif');
     background-size: cover
 }
@@ -108,6 +108,11 @@ nav.nav ul{
     justify-items: center;
     align-items: center;
 
+    padding-top: 35px;
+    width: 5%;
+    height: auto;
+    background-image: url('/img/violeta.jfif');
+    background-size: cover
 }
 
 .menu ul a{

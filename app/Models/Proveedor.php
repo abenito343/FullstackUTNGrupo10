@@ -15,4 +15,10 @@ class Proveedor extends Model
         'telefono',
         'correo',
     ];
+
+    // Definir la relación inversa (uno a muchos)
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'proveedor_id');  // Relación uno a muchos
+    }
 }

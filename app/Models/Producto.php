@@ -2,14 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
-    use HasFactory;
+
 
     protected $table = 'productos';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'nombre',       // Campo nombre
+        'precio',       // Campo precio
+        'stock',        // Campo stock
+        'img',          // Campo imagen
+        'categoria_id', // Relación con la categoría
+        'proveedor_id'  // Relación con el proveedor
+    ];
 
     public function categoria()
     {
