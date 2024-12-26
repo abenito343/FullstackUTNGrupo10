@@ -49,15 +49,14 @@ class UsuarioController extends Controller
             "nombre" => ['required'],
             "apellido" => ['required'],
             "dni" => ['required', 'numeric'],
-            "nickname" => ['required', 'unique:usuarios,nickname'],
+            "nickname" => ['required'],
             "password" => ['required', 'confirmed'],
             "rol" => ['required']
             ], 
             [
             "required" => "Este campo es obligatorio",
             "password.confirmed" => "Las contraseñas no coinciden",
-            "dni.numeric" => "El DNI debe ser un numero",
-            "nickname.unique" => "El nickname debe ser unico"
+            "dni.numeric" => "El DNI debe ser un numero"
             ]
         );
 
@@ -109,12 +108,11 @@ class UsuarioController extends Controller
             "nombre" => ['required'],
             "apellido" => ['required'],
             "dni" => ['required', 'numeric'],
-            "nickname" => ['required', 'unique:usuarios,nickname']
+            "nickname" => ['required']
             ], 
             [
             "required" => "Este campo es obligatorio",
-            "dni.numeric" => "El DNI debe ser un numero",
-            "nickname.unique" => "El nickname debe ser unico"
+            "dni.numeric" => "El DNI debe ser un numero"
             ]
         );
 
