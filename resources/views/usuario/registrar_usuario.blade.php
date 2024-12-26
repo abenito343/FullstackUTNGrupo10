@@ -1,85 +1,75 @@
 @include('navbar_admin')
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/registrar_usuario.css">
     <title>Registrar nuevo usuario</title>
 </head>
-<body>
-    <div class="container pantalla-registro">
-        <div class="row">
-            <div class="column formulario">
-            <a href="/usuario">< Volver al menú de Usuarios</a>
-                <h1>Registro de usuario</h1>
-                <h2>Ingrese los datos del nuevo usuario</h2>
-                <form action="/usuario" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="column col-6">
-                            <label class="label-formulario" for="nombre">Nombre</label>
-                            <input class="input-campo" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            @error('nombre')
-                                <div class="div-error">{{$message}}</div>
-                            @enderror
-                        </div>
-                        <div class="column col-6">
-                            <label class="label-formulario" for="apellido">Apellido</label>
-                            <input class="input-campo" type="text" id="apellido" name="apellido" placeholder="Ingrese apellido">
-                            @error('apellido')
-                                <div class="div-error">{{$message}}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column col-6">
-                            <label class="label-formulario" for="dni">DNI</label>
-                            <input class="input-campo" type="text" id="dni" name="dni" placeholder="Ingrese DNI">
-                            @error('dni')
-                                <div class="div-error">{{$message}}</div>
-                            @enderror
-                        </div>
-                        <div class="column col-6">
-                            <label class="label-formulario" for="usuario">Nickname de Usuario</label>
-                            <input class="input-campo" type="text" id="nickname" name="nickname" placeholder="Ingrese nickname" autocomplete="off">
-                            @error('nickname')
-                                <div class="div-error">{{$message}}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column col-6">
-                            <label class="label-formulario" for="password">Contraseña</label>
-                            <input class="input-campo" type="password" id="password" name="password" placeholder="Ingrese su contraseña" autocomplete="off">
-                            @error('password')
-                                <div class="div-error">{{$message}}</div>
-                            @enderror
-                        </div>
-                        <div class="column col-6">
-                            <label class="label-formulario" for="password">Repetir Contraseña</label>
-                            <input class="input-campo" type="password" id="password_confirmation" name="password_confirmation" placeholder="Repita la contraseña" autocomplete="off">
-                            @error('password_confirmation')
-                                <div class="div-error">{{$message}}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column col-6">
-                            <label class="label-formulario" for="rol">Rol</label>
-                            <select class="input-campo" id="rol" name="rol">
-                                <option value="admin">Admin</option>
-                                <option value="vendedor">Vendedor</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column">
-                            <input class="boton-registro" type="submit" value="Registrar usuario">
-                        </div>
-                    </div>
-                    <br>
-                </form>
-            </div>
+
+<div class="contenido">
+    @if (session()->has("success"))
+        <div class="container">
+            <div class="alert alert-success text-center">{{ session("success") }}</div>
+        </div>
+    @endif
+    <div class="nav2">
+        <div class="container-fluid">
+            <div class="col"><h3>Registro de usuario</h3></div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+    <div>
+        <form action="/usuario" method="post" class="row g-3">
+            @csrf
+            <div class="col-md-6">
+                <label class="form-label" for="nombre">Nombre</label>
+                <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre">
+                @error('nombre')
+                    <div class="div-error">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="apellido">Apellido</label>
+                <input class="form-control" type="text" id="apellido" name="apellido" placeholder="Ingrese apellido">
+                @error('apellido')
+                    <div class="div-error">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="dni">DNI</label>
+                <input class="form-control" type="text" id="dni" name="dni" placeholder="Ingrese DNI">
+                @error('dni')
+                    <div class="div-error">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="nickname">Nickname de Usuario</label>
+                <input class="form-control" type="text" id="nickname" name="nickname" placeholder="Ingrese nickname" autocomplete="off">
+                @error('nickname')
+                    <div class="div-error">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="password">Contraseña</label>
+                <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese su contraseña" autocomplete="off">
+                @error('password')
+                    <div class="div-error">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="password_confirmation">Repetir Contraseña</label>
+                <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" placeholder="Repita la contraseña" autocomplete="off">
+                @error('password_confirmation')
+                    <div class="div-error">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="rol">Rol</label>
+                <select class="form-select" id="rol" name="rol">
+                    <option value="admin">Admin</option>
+                    <option value="vendedor">Vendedor</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Registrar usuario</button>
+            </div>
+        </form>
+    </div>
+</div>

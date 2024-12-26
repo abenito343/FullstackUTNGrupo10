@@ -5,88 +5,89 @@
 </head>
 
 <div class="contenido">
-    <div class="container">
+    @if (session()->has("success"))
+        <div class="container">
+            <div class="alert alert-success text-center">{{ session("success") }}</div>
+        </div>
+    @endif
 
-        @if (session()->has("success"))
-            <div class="container">
-                <div class="alert alert-success text-center">{{ session("success") }}</div>
-            </div>
-        @endif
-
-        <div class="horizontal-line"></div>
-        <div class="header">
+    <div class="horizontal-line"></div>
+    <div class="nav2">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1>Gestión de Usuarios</h1>
+                    <h3>Gestión de Usuarios</h3>
                 </div>
                 <div class="col">
                     <form action="/usuario/create" method="get">
-                        <button>+ Nuevo Usuario</button>
+                        <button class="btn btn-primary">+ Nuevo Usuario</button>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="horizontal-line"></div>
-        <form class="buscador" method="get" action="">
-            <input placeholder="Búsqueda rápida" type="text" id="busqueda" name="busqueda" autocomplete="off">
-            <button>Buscar</button>
-        </form>
-        <div class="horizontal-line"></div>
-
-        @if(request()->has('busqueda'))
-            @php
-                $usuarios = $usuarios->filter(function($usuario) {
-                    return stripos($usuario->nombre, request('busqueda')) !== false || stripos($usuario->apellido, request('busqueda')) !== false || stripos($usuario->dni, request('busqueda')) !== false || stripos($usuario->nickname, request('busqueda')) !== false;
-                });
-            @endphp
-        @endif
-
-        <table class="product-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>DNI</th>
-                    <th>Usuario</th>
-                    <th>Rol</th>
-                    <th>Editar datos de usuario</th>
-                    <th>Cambiar contraseña</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($usuarios as $usuario)
-                    <tr>
-                        <td>{{ $usuario->nombre }}</td>
-                        <td>{{ $usuario->apellido }}</td>
-                        <td>{{ $usuario->dni }}</td>
-                        <td>{{ $usuario->nickname }}</td>
-                        <td>{{ $usuario->rol }}</td>
-                        <td>                        
-                            <form action="/usuario/{{ $usuario->id }}/edit" method="get">
-                                <button class="boton-edit"><i class="las la-edit"></i></button>
-                            </form>
-                        </td>
-                        <td>                        
-                            <form action="/usuario/{{ $usuario->id }}/password_edit" method="get">
-                                <button class="boton-edit"><i class="las la-edit"></i></button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="/usuario/{{ $usuario->id }}" method="post">
-                                @csrf
-                                @method("DELETE")
-                                <button class="boton-delete"><i class="las la-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        @if($usuarios->isEmpty())
-            <div class="alert alert-warning text-center">No se encontraron resultados</div>
-        @endif
-
     </div>
+    <div class="horizontal-line"></div>
+    <form class="buscador" method="get" action="">
+        <input placeholder="Búsqueda rápida" type="text" id="busqueda" name="busqueda" autocomplete="off">
+        <button>Buscar</button>
+    </form>
+    <div class="horizontal-line"></div>
+
+    @if(request()->has('busqueda'))
+        @php
+            $usuarios = $usuarios->filter(function($usuario) {
+                return stripos($usuario->nombre, request('busqueda')) !== false || 
+                       stripos($usuario->apellido, request('busqueda')) !== false || 
+                       stripos($usuario->dni, request('busqueda')) !== false || 
+                       stripos($usuario->nickname, request('busqueda')) !== false;
+            });
+        @endphp
+    @endif
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Editar datos de usuario</th>
+                <th scope="col">Cambiar contraseña</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($usuarios as $usuario)
+                <tr>
+                    <td>{{ $usuario->nombre }}</td>
+                    <td>{{ $usuario->apellido }}</td>
+                    <td>{{ $usuario->dni }}</td>
+                    <td>{{ $usuario->nickname }}</td>
+                    <td>{{ $usuario->rol }}</td>
+                    <td>                        
+                        <form action="/usuario/{{ $usuario->id }}/edit" method="get">
+                            <button><i class="las la-edit"></i></button>
+                        </form>
+                    </td>
+                    <td>                        
+                        <form action="/usuario/{{ $usuario->id }}/password_edit" method="get">
+                            <button><i class="las la-edit"></i></button>
+                        </form>
+                    </td>
+                    <td class="icono-tabla">
+                        <form action="/usuario/{{ $usuario->id }}" method="post">
+                            @csrf
+                            @method("DELETE")
+                            <button><i class="las la-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    @if($usuarios->isEmpty())
+        <div class="alert alert-warning text-center">No se encontraron resultados</div>
+    @endif
 </div>

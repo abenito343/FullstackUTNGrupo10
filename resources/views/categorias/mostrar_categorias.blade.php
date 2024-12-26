@@ -15,9 +15,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col"><h3>Gestión de Categorías</h3></div>
-                <form action="{{ route('categorias.create') }}" method="get">
-                    <button class="btn btn-primary">+ Nueva Categoría</button>
-                </form>
+                <div class="col">
+                    <form action="{{ route('categorias.create') }}" method="get">
+                        <button class="btn btn-primary">+ Nueva Categoría</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -26,13 +28,6 @@
         <input placeholder="Búsqueda rápida" type="text" id="busqueda" name="busqueda" autocomplete="off">
         <button>Buscar</button>
     </form>
-    @if(request()->has('busqueda'))
-        @php
-            $categorias = $categorias->filter(function($categoria) {
-                return stripos($categoria->nombre, request('busqueda')) !== false || stripos($categoria->descripcion, request('busqueda')) !== false;
-            });
-        @endphp
-    @endif
     <div class="horizontal-line"></div>
     <table class="table">
         <thead>
@@ -64,6 +59,14 @@
             @endforeach
         </tbody>
     </table>
+    @if(request()->has('busqueda'))
+        @php
+            $categorias = $categorias->filter(function($categoria) {
+                return stripos($categoria->nombre, request('busqueda')) !== false || 
+                       stripos($categoria->descripcion, request('busqueda')) !== false;
+            });
+        @endphp
+    @endif
     @if($categorias->isEmpty())
         <div class="alert alert-warning text-center">No se encontraron resultados</div>
     @endif
