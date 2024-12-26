@@ -41,6 +41,9 @@
         <div class="menu">
             <ul>
                 <li>
+                    <a href="/dashboard"><i class="las la-tachometer-alt"></i><p>Dashboard</p></a>
+                </li>
+                <li>
                     <a href="/usuario"><i class="las la-user"></i><p>Usuarios</p></a>
                 </li>
                 <li>
@@ -53,7 +56,7 @@
                     <a href="/proveedor"><i class="las la-shipping-fast"></i><p>Proveedores</p></a>
                 </li>
                 <li>
-                    <a href="/ventas"><i class="las la-dollar-sign"></i><p>Ventas</p></a>
+                    <a href="/dashboard"><i class="las la-dollar-sign"></i><p>Ventas</p></a>
                 </li>
             </ul>
         </div>

@@ -25,7 +25,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="nombre" class="text-muted mb-1">Apellido:</label>
+                        <label for="apellido" class="text-muted mb-1">Apellido:</label>
                         <input value="{{ old('apellido', $usuario->apellido) }}" type="text" class="form-control form-control-lg" id="apellido" name="apellido" autocomplete="off">
                         @error('apellido')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -53,9 +53,19 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="rol" class="text-muted mb-1">Rol:</label>
+                        <input value="{{ old('rol', $usuario->rol) }}" type="text" class="form-control form-control-lg" id="rol" name="rol" autocomplete="off">
+                        @error('rol')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
             <br>
             <button class="btn btn-primary">Actualizar</button>
         </form>
     </div>
 </div>
-
