@@ -6,6 +6,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\QuienesomosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::get('/productos', [ProductoController::class, 'index']);
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
 Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
 Route::resource('productos', ProductoController::class);
+
+Route::get('/quienes-somos', [QuienesomosController::class, 'quieneSomos'])->name('quieneSomos');
 
 Route::resource('proveedores', ProveedorController::class);
 

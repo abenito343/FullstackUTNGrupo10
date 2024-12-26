@@ -24,10 +24,9 @@
                            <a href="">Contacto</a>
                         </li>
                         <li>
-                            <a href="">¿Quiénes somos?</a>
+                            <a href="{{ route('quieneSomos') }}">¿Quiénes somos?</a>
                         </li>
                         <li>
-                            
                         {{ Auth::user()->nickname }}
                         </li>
                         <li>
