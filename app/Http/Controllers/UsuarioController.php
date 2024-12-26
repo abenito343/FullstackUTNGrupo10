@@ -48,14 +48,16 @@ class UsuarioController extends Controller
         $datos = $request->validate([
             "nombre" => ['required'],
             "apellido" => ['required'],
-            "dni" => ['required'],
-            "nickname" => ['required'],
+            "dni" => ['required', 'numeric'],
+            "nickname" => ['required', 'unique:usuarios,nickname'],
             "password" => ['required', 'confirmed'],
             "rol" => ['required']
             ], 
             [
             "required" => "Este campo es obligatorio",
-            "password.confirmed" => "Las contraseñas no coinciden"
+            "password.confirmed" => "Las contraseñas no coinciden",
+            "dni.numeric" => "El DNI debe ser un numero",
+            "nickname.unique" => "El nickname debe ser unico"
             ]
         );
 
@@ -106,11 +108,13 @@ class UsuarioController extends Controller
         $datos = $request->validate([
             "nombre" => ['required'],
             "apellido" => ['required'],
-            "dni" => ['required'],
-            "nickname" => ['required']
+            "dni" => ['required', 'numeric'],
+            "nickname" => ['required', 'unique:usuarios,nickname']
             ], 
             [
             "required" => "Este campo es obligatorio",
+            "dni.numeric" => "El DNI debe ser un numero",
+            "nickname.unique" => "El nickname debe ser unico"
             ]
         );
 

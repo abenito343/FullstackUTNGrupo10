@@ -20,44 +20,44 @@
             @csrf
             <div class="col-md-6">
                 <label class="form-label" for="nombre">Nombre</label>
-                <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre">
+                <input value="{{ old('nombre') }}" class="form-control" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre">
                 @error('nombre')
-                    <div class="div-error">{{$message}}</div>
+                    <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="apellido">Apellido</label>
-                <input class="form-control" type="text" id="apellido" name="apellido" placeholder="Ingrese apellido">
+                <input value="{{ old('apellido') }}" class="form-control" type="text" id="apellido" name="apellido" placeholder="Ingrese apellido">
                 @error('apellido')
-                    <div class="div-error">{{$message}}</div>
+                    <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="dni">DNI</label>
-                <input class="form-control" type="text" id="dni" name="dni" placeholder="Ingrese DNI">
+                <input value="{{ old('dni') }}" class="form-control" type="text" id="dni" name="dni" placeholder="Ingrese DNI">
                 @error('dni')
-                    <div class="div-error">{{$message}}</div>
+                    <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="nickname">Nickname de Usuario</label>
-                <input class="form-control" type="text" id="nickname" name="nickname" placeholder="Ingrese nickname" autocomplete="off">
+                <input value="{{ old('nickname') }}" class="form-control" type="text" id="nickname" name="nickname" placeholder="Ingrese nickname" autocomplete="off">
                 @error('nickname')
-                    <div class="div-error">{{$message}}</div>
+                    <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="password">Contraseña</label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="Ingrese su contraseña" autocomplete="off">
+                <input value="{{ old('password') }}" class="form-control" type="password" id="password" name="password" placeholder="Ingrese su contraseña" autocomplete="off">
                 @error('password')
-                    <div class="div-error">{{$message}}</div>
+                    <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="password_confirmation">Repetir Contraseña</label>
-                <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" placeholder="Repita la contraseña" autocomplete="off">
+                <input value="{{ old('password_confirmation') }}" class="form-control" type="password" id="password_confirmation" name="password_confirmation" placeholder="Repita la contraseña" autocomplete="off">
                 @error('password_confirmation')
-                    <div class="div-error">{{$message}}</div>
+                    <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="col-md-6">
