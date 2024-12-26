@@ -12,7 +12,7 @@ function convertirTablaACSV(filename) {
             csvrow.push(cols[j].innerHTML);
         }
 
-        csv_data.push(csvrow.join(","));
+        csv_data.push(csvrow.join(";"));
     }
     csv_data = csv_data.join('\n');
     descargarCSV(csv_data, filename);
@@ -31,7 +31,7 @@ function convertirUsuariosACSV() {
             csvrow.push(cols[j].innerHTML);
         }
 
-        csv_data.push(csvrow.join(","));
+        csv_data.push(csvrow.join(";"));
     }
     csv_data = csv_data.join('\n');
     descargarCSV(csv_data, "usuarios.csv");
