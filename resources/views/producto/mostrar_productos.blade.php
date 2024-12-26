@@ -67,4 +67,14 @@
             @endforeach
             </tbody>
         </table>
+        @if(request()->has('busqueda'))
+            @php
+                $productos = $productos->filter(function($producto) {
+                    return stripos($producto->nombre, request('busqueda')) !== false || stripos($producto->descripcion, request('busqueda')) !== false;
+                });
+            @endphp
+        @endif
+        @if($productos->isEmpty())
+            <div class="alert alert-warning text-center">No se encontraron resultados</div>
+        @endif
 </div>

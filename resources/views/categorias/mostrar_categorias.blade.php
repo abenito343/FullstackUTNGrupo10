@@ -26,6 +26,13 @@
         <input placeholder="Búsqueda rápida" type="text" id="busqueda" name="busqueda" autocomplete="off">
         <button>Buscar</button>
     </form>
+    @if(request()->has('busqueda'))
+        @php
+            $categorias = $categorias->filter(function($categoria) {
+                return stripos($categoria->nombre, request('busqueda')) !== false || stripos($categoria->descripcion, request('busqueda')) !== false;
+            });
+        @endphp
+    @endif
     <div class="horizontal-line"></div>
     <table class="table">
         <thead>
@@ -57,4 +64,7 @@
             @endforeach
         </tbody>
     </table>
+    @if($categorias->isEmpty())
+        <div class="alert alert-warning text-center">No se encontraron resultados</div>
+    @endif
 </div>

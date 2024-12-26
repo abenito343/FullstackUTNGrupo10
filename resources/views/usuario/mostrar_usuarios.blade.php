@@ -32,6 +32,15 @@
             <button>Buscar</button>
         </form>
         <div class="horizontal-line"></div>
+
+        @if(request()->has('busqueda'))
+            @php
+                $usuarios = $usuarios->filter(function($usuario) {
+                    return stripos($usuario->nombre, request('busqueda')) !== false || stripos($usuario->apellido, request('busqueda')) !== false || stripos($usuario->dni, request('busqueda')) !== false || stripos($usuario->nickname, request('busqueda')) !== false;
+                });
+            @endphp
+        @endif
+
         <table class="product-table">
             <thead>
                 <tr>
@@ -74,5 +83,10 @@
                 @endforeach
             </tbody>
         </table>
-</div>
+
+        @if($usuarios->isEmpty())
+            <div class="alert alert-warning text-center">No se encontraron resultados</div>
+        @endif
+
+    </div>
 </div>

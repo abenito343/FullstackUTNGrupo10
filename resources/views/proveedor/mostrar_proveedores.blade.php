@@ -61,4 +61,17 @@
             @endforeach
             </tbody>
         </table>
+        @if(request()->has('busqueda'))
+            @php
+                $proveedores = $proveedores->filter(function($proveedor) {
+                    return stripos($proveedor->razonSocial, request('busqueda')) !== false || 
+                           stripos($proveedor->direccion, request('busqueda')) !== false || 
+                           stripos($proveedor->telefono, request('busqueda')) !== false || 
+                           stripos($proveedor->correo, request('busqueda')) !== false;
+                });
+            @endphp
+        @endif
+        @if($proveedores->isEmpty())
+            <div class="alert alert-warning text-center">No se encontraron resultados</div>
+        @endif
 </div>
