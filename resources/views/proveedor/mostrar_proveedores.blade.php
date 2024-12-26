@@ -15,9 +15,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col"><h3>Gestión de Proveedores</h3></div>
-                        <form action="/proveedor/create" method="get">
-                                <button class="btn btn-primary">+ Nuevo Proveedor</button>
-                        </form>    
+                        <div class="col"> 
+                            <form action="/proveedor/create" method="get">
+                            <button class="btn btn-primary">+ Nuevo Proveedor</button>
+                            </form>
+                        </div>    
                     </div>
                 </div>
             </div>
