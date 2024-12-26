@@ -51,7 +51,10 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Rol</label>
-                <input value="{{ old('rol', $usuario->rol) }}" type="text" class="form-control" id="rol" name="rol" autocomplete="off">
+                <select class="form-select" id="rol" name="rol">
+                    <option value="admin">Admin</option>
+                    <option value="vendedor">Vendedor</option>
+                </select>
                 @error('rol')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

@@ -76,6 +76,6 @@ Route::resource('producto', ProductoController::class)->middleware('auth');
 
 
 Route::get('/ventas', [VentasController::class, 'index'])->name('ventas.index');
-Route::get('/detalleVentas', [VentasController::class, 'detalle'])->name('ventas.detalle');
-Route::get('/vender', [VentasController::class, 'vender'])->name('ventas.vender');
+Route::get('/detalleVentas', [VentasController::class, 'show'])->name('ventas.detalle');
+Route::get('/vender', [VentasController::class, 'create'])->name('ventas.vender');
 Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');

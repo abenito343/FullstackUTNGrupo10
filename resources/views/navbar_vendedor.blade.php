@@ -9,14 +9,14 @@
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/css/navbar_admin.css">
+    <link rel="stylesheet" href="{{ asset('css/navbar_vendedor.css') }}">
 </head>
 <body>
     <nav class="nav">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <a href="/dashboard"><h5>Inventario</h5></a>
+                    <a href="/dashboard"><h5>Inventario</h1></a>
                 </div>
                 <div class="col">
                     <ul>
@@ -41,22 +41,14 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a href="/dashboard"><i class="las la-tachometer-alt"></i><p>Dashboard</p></a>
+                    <a href="/dashboard_vendedor"><i class="las la-tachometer-alt"></i><p>Dashboard</p></a>
                 </li>
                 <li>
-                    <a href="/usuario"><i class="las la-user"></i><p>Usuarios</p></a>
+                    <a href="/vender"><i class="las la-shipping-fast"></i><p>Vender</p></a>
                 </li>
                 <li>
-                    <a href="/producto"><i class="las la-gift"></i><p>Productos</p></a>
-                </li>
-                <li>
-                    <a href="/categorias"><i class="las la-stream"></i><p>Categorías</p></a>
-                </li>
-                <li>
-                    <a href="/proveedor"><i class="las la-shipping-fast"></i><p>Proveedores</p></a>
-                </li>
-                <li>
-                    <a href="/ventas"><i class="las la-dollar-sign"></i><p>Ventas</p></a>
+                    <a href="/ventas"><i class="las la-dollar-sign"></i><p>Mis Ventas</p></a>
                 </li>
             </ul>
         </div>
+</html>
