@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <a href="/dashboard"><h5>Inventario</h1></a>
+                    <a href="/dashboard"><h5>Inventario</h5></a>
                 </div>
                 <div class="col">
                     <ul>
@@ -60,4 +60,3 @@
                 </li>
             </ul>
         </div>
-</html>

@@ -110,7 +110,6 @@ nav.nav ul{
     flex-direction: column;
     justify-items: center;
     align-items: center;
-
     padding-top: 35px;
     width: 5%;
     height: auto;
@@ -126,13 +125,14 @@ nav.nav ul{
 .main{
     display: flex;
     flex-direction: row;
+    min-height: 900px;
 }
 
 .contenido{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 10%;
+    padding-bottom: 5%;
 }
 .table{
     margin-top: 100px;
