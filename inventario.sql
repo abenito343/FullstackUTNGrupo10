@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2024 a las 17:00:25
+-- Tiempo de generación: 26-12-2024 a las 20:01:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -38,8 +38,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Cocina y Hogar', 'Para la casa'),
-(2, 'olageR', 'Para el amigo');
+(1, 'Cocina y Hogar2', 'Para la casa'),
+(2, 'olageR', 'Para el amigo'),
+(3, 'Jardin', 'herramientas y utileria de jardin');
 
 -- --------------------------------------------------------
 
@@ -125,15 +126,16 @@ CREATE TABLE `usuarios` (
   `password` varchar(255) NOT NULL,
   `nombre` varchar(55) NOT NULL,
   `apellido` varchar(55) NOT NULL,
-  `dni` int(10) UNSIGNED DEFAULT NULL
+  `dni` int(10) UNSIGNED DEFAULT NULL,
+  `rol` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nickname`, `password`, `nombre`, `apellido`, `dni`) VALUES
-(1, 'admin', '$2y$10$SQSmB0O9HBXcLFSe5U2s.uLSC87/.FU1x989DC.rTDfGLqnGZrXhm', 'admin', 'admin', 45878987);
+INSERT INTO `usuarios` (`id`, `nickname`, `password`, `nombre`, `apellido`, `dni`, `rol`) VALUES
+(1, 'admin', '$2y$10$SQSmB0O9HBXcLFSe5U2s.uLSC87/.FU1x989DC.rTDfGLqnGZrXhm', 'admin', 'admin', 45878987, 'admin');
 
 -- --------------------------------------------------------
 
@@ -208,7 +210,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas`
