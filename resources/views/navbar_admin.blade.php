@@ -56,7 +56,7 @@
                     <a href="/proveedor"><i class="las la-shipping-fast"></i><p>Proveedores</p></a>
                 </li>
                 <li>
-                    <a href="/dashboard"><i class="las la-dollar-sign"></i><p>Ventas</p></a>
+                    <a href="/ventas"><i class="las la-dollar-sign"></i><p>Ventas</p></a>
                 </li>
             </ul>
         </div>

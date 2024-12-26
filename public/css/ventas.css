@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    font-family: Quicksand;
+    font-size: x-large;
+}
+.nav{
+    background-color:#eaf2f8;
+    height: 65px;
+    display: flex;
+    font-size:large;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+    font-family: Quicksand;
+    font-size: x-large;
+      /*hacer que el nav se quede estático en el lugar*/
+}
+
+.nav a{
+    text-decoration: none;
+}
+
+nav.nav ul{
+    display: flex;
+    list-style-type: none;
+    padding-left: 550px;
+    padding-right: 25px;
+    align-items: center;
+    gap: 50px;
+    white-space: nowrap
+}
+
+.menu{
+    padding-top: 35px;
+    background-color: #aed6f1ed;
+    width: 5%;
+    height: 850px;
+    background-image: url('../img/azul.jpg');
+    background-size: cover
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    list-style-type: none;
+    margin-right: 10px;
+    font-size: 60px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.menu ul p{
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 15px;
+    text-align: center;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.menu ul a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav2{
+    display: flex;
+    height: 100px;
+    display: flex;
+    font-size:large;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 70px;
+}
+.nav2 button{
+    margin-left: 600px;
+    white-space: nowrap;
+    
+}
+.nav2 h3{
+    text-decoration: none;
+    color: rgb(56, 125, 235);
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenido{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.table{
+    margin-top: 100px;
+    width: 80%;
+    margin: 0 auto;
+    margin-left: 200px;
+    text-align: center;
+}
+.table a{
+    color: black;
+}
+
+.buscador{
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-bottom: 70px;
+    width: 400px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.buscador button{
+    width: 150px;
+}
+
+.total{
+    margin-top: 30px;
+    margin-left: 1450px;
+}
+
+.vender{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    
+}
+.datosProducto button{
+    margin-left: 0;
+    width: 160px;
+    white-space: nowrap
+    
+}
+.datosProducto{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 29%;
+    padding-left: 3%;
+}
+
+.carrito{
+    width: 70%;
+}
+
+.duplaBoton{
+    display: flex;
+    gap: 28%;
+}
+
+.duplaBoton2{
+    display: flex;
+    gap: 50%;
+
+    margin-top: 1%;
+    margin-left: 17%;
+    white-space: nowrap
+}
