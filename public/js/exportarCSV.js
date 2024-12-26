@@ -38,7 +38,8 @@ function convertirUsuariosACSV() {
 }
 
 function descargarCSV(csv_data, filename) {
-    CSVFile = new Blob([csv_data], {type: "text/csv"});
+    let bom = "\uFEFF";
+    let CSVFile = new Blob([bom + csv_data], {type: "text/csv;charset=utf-8;"});
 
     let temp_link = document.createElement('a');
     let url = URL.createObjectURL(CSVFile);
