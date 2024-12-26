@@ -30,11 +30,6 @@
                         <button class="boton-dashboard" type="submit">Registro de nuevo usuario</button>
                     </form>
                 </div>
-                <div class="col">
-                    <form action="/usuario" method="get">
-                        <button class="boton-dashboard" type="submit">Editar datos de usuarios</button>
-                    </form>
-                </div>
             </div>
         </div>
         <div class="horizontal-line"></div>
@@ -50,12 +45,7 @@
                 </div>
                 <div class="col">
                     <form action="/productos/create" method="get">
-                        <button class="boton-dashboard" type="submit">Registro de nuevos productos</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <form action="/productos" method="get">
-                        <button class="boton-dashboard" type="submit">Editar datos de productos</button>
+                        <button class="boton-dashboard" type="submit">Registro de nuevo producto</button>
                     </form>
                 </div>
             </div>
@@ -73,12 +63,7 @@
                 </div>
                 <div class="col">
                     <form action="/categorias/create" method="get">
-                        <button class="boton-dashboard" type="submit">Registro de nuevas categorias</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <form action="/categorias" method="get">
-                        <button class="boton-dashboard" type="submit">Editar datos de categorias</button>
+                        <button class="boton-dashboard" type="submit">Registro de nueva categoria</button>
                     </form>
                 </div>
             </div>
@@ -96,12 +81,7 @@
                 </div>
                 <div class="col">
                     <form action="/proveedor/create" method="get">
-                        <button class="boton-dashboard" type="submit">Registro de nuevo proveedores</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <form action="/proveedor" method="get">
-                        <button class="boton-dashboard" type="submit">Editar datos de proveedores</button>
+                        <button class="boton-dashboard" type="submit">Registro de nuevo proveedor</button>
                     </form>
                 </div>
             </div>
