@@ -69,4 +69,7 @@
                 @endforeach
                 </tbody>
             </table>
+            @if($productos->isEmpty())
+            <div class="alert alert-warning text-center">No se encontraron resultados</div>
+        @endif
     </div>
