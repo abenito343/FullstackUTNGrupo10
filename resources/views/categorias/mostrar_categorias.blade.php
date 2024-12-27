@@ -16,6 +16,9 @@
             <div class="row">
                 <div class="col"><h3>Gestión de Categorías</h3></div>
                 <div class="col">
+                    <button class="btn btn-primary" type="button" onclick="convertirTablaACSV('categorias.csv')">Guardar CSV</button>
+                </div>
+                <div class="col">
                     <form action="{{ route('categorias.create') }}" method="get">
                         <button class="btn btn-primary">+ Nueva Categoría</button>
                     </form>
@@ -71,3 +74,4 @@
         <div class="alert alert-warning text-center">No se encontraron resultados</div>
     @endif
 </div>
+<script type="text/javascript" src="/js/exportarCSV.js"></script>
