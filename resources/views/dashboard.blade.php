@@ -93,23 +93,13 @@
         <div class="row">
             <div class="contenedor-tarjetas">
                 <div class="col">
-                    <form action="/ventas" method="get">
+                    <form action="/ventas_admin" method="get">
                         <button class="boton-dashboard" type="submit">Tabla de gestion de ventas</button>
                     </form>
                 </div>
                 <div class="col">
-                    <form action="/ventas/{usuario}" method="get">
+                    <form action="/ventas" method="get">
                         <button class="boton-dashboard boton-dashboard-azul" type="submit">Ventas por usuario</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <form action="/ventas/{usuario}" method="get">
-                        <button class="boton-dashboard boton-dashboard-azul" type="submit">Detalle de ventas</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <form action="/ventas/{usuario}/create" method="get">
-                        <button class="boton-dashboard boton-dashboard-azul" type="submit">Registrar nueva venta</button>
                     </form>
                 </div>
             </div>

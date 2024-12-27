@@ -1,14 +1,14 @@
 @include('navbar_vendedor')
 
 <head>
-    <title>Vender</title>
+    <title>Detalle de la venta</title>
 </head>
         <div class="contenido">
             <div class="nav2">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col"><h3>Detalle de la venta</h3></div>
-                    </div>
+                        </div>
                 </div>
             </div>
             <div class="buscador">

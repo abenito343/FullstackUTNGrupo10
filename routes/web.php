@@ -75,3 +75,4 @@ Route::get('/ventas', [VentasController::class, 'index'])->name('ventas.index');
 Route::get('/detalleVentas', [VentasController::class, 'show'])->name('ventas.detalle');
 Route::get('/vender', [VentasController::class, 'create'])->name('ventas.vender');
 Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');
+Route::get('/ventas_admin', [VentasController::class, 'ventas_admin'])->name('ventas_admin');

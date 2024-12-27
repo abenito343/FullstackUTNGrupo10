@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
 use App\Models\Venta;
+use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VentasController extends Controller
 {
@@ -12,6 +13,29 @@ class VentasController extends Controller
     {
         $ventas = Venta::all();
         return view('ventas.ventas', compact('ventas'));
+    }
+
+    public function ventas_admin(Request $request)
+    {
+        if ($request->has("busqueda")) {
+            $busqueda = $request->busqueda;
+
+            $ventas = DB::table('usuarios')
+                ->join('ventas', 'ventas.usuario_id', '=', 'usuarios.id')
+                ->select('usuarios.nombre', 'usuarios.apellido', 'usuarios.nickname', 'ventas.id', 'ventas.fecha', 'ventas.total')
+                ->where('ventas.fecha', '=', $busqueda)
+                ->get();
+        } else {
+            $ventas = DB::table('usuarios')
+                ->join('ventas', 'ventas.usuario_id', '=', 'usuarios.id')
+                ->select('usuarios.nombre', 'usuarios.apellido', 'usuarios.nickname', 'ventas.id', 'ventas.fecha', 'ventas.total')
+                ->get();
+        }
+
+        $parametros=[
+            "ventas"=>$ventas
+        ];
+        return view('ventas.ventas_admin', $parametros);
     }
 
     public function create()
