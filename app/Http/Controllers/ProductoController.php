@@ -111,7 +111,18 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        $producto = Producto::find($id);
+    
+        if ($producto) {
+            // Devolver los detalles en formato JSON
+            return response()->json([
+                'descripcion' => $producto->descripcion,
+                'precio' => $producto->precio,
+                'img'=>asset($producto->img)
+            ]);
+        }
+
+        return response()->json(['error' => 'Producto no encontrado'], 404);
     }
 
     /**

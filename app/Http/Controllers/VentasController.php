@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Producto;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,10 @@ class VentasController extends Controller
 
     public function create()
     {
-        return view('ventas.vender');
+        $parametros=[
+            "productos"=>Producto::all()
+        ];
+        return view('ventas.vender', $parametros);
     }
 
     public function store(Request $request)
