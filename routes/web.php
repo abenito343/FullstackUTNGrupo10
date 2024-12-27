@@ -2,13 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\VentasController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\QuienesomosController;
-use App\Http\Controllers\ContactoController;
-use App\Http\Controllers\VentasController;
+use App\Http\Controllers\BarraSuperiorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +33,9 @@ Route::get('/productos', [ProductoController::class, 'index'])->name('productos.
 Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
 Route::resource('productos', ProductoController::class);*/
 
-Route::get('/quienes-somos', [QuienesomosController::class, 'quieneSomos'])->name('quieneSomos');
-Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto');
+Route::get('/quienes-somos', [BarraSuperiorController::class, 'quieneSomos'])->name('quieneSomos');
+Route::get('/contacto', [BarraSuperiorController::class, 'contacto'])->name('contacto');
+Route::get('/dashboard', [BarraSuperiorController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/categorias', [CategoriaController::class, 'index']);
 Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
@@ -64,10 +64,6 @@ Route::post('/usuario/{usuario}/password_edit', [UsuarioController::class, 'pass
 
 Route::get('/plantilla', function () {
     return view('plantilla');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
 });
 
 Route::resource("proveedor", ProveedorController::class)->middleware("auth");
