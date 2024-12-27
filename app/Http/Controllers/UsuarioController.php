@@ -108,7 +108,8 @@ class UsuarioController extends Controller
             "nombre" => ['required'],
             "apellido" => ['required'],
             "dni" => ['required', 'numeric'],
-            "nickname" => ['required']
+            "nickname" => ['required'],
+            "rol" => ['required']
             ], 
             [
             "required" => "Este campo es obligatorio",
@@ -120,6 +121,7 @@ class UsuarioController extends Controller
         $usuario->apellido = $datos["apellido"];
         $usuario->dni = $datos["dni"];
         $usuario->nickname = $datos["nickname"];
+        $usuario->rol = $datos["rol"];
 
         $usuario->save();
 
