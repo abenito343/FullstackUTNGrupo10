@@ -15,7 +15,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col"><h3>Mis Ventas</h3></div>
-                <div class="col boton"><button type="button" class="btn btn-primary">Descargar Excel</button></div>
+                <div class="col boton"><button type="button" class="btn btn-primary" onclick="convertirVentasACSV()">Descargar CSV</button></div>
             </div>
         </div>
     </div>
@@ -73,3 +73,4 @@
     @endif
 </div>
 
+<script type="text/javascript" src="/js/exportarCSV.js"></script>

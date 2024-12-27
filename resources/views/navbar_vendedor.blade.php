@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <a href="/dashboard"><h5>Inventario</h1></a>
+                    <a href="/ventas"><h5>Inventario</h5></a>
                 </div>
                 <div class="col">
                     <ul>
@@ -40,9 +40,6 @@
     <div class="main">
         <div class="menu">
             <ul>
-                <li>
-                    <a href="/dashboard_vendedor"><i class="las la-tachometer-alt"></i><p>Dashboard</p></a>
-                </li>
                 <li>
                     <a href="/vender"><i class="las la-shipping-fast"></i><p>Vender</p></a>
                 </li>

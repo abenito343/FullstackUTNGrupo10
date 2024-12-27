@@ -37,6 +37,25 @@ function convertirUsuariosACSV() {
     descargarCSV(csv_data, "usuarios.csv");
 }
 
+function convertirVentasACSV() {
+    let csv_data = [];
+    
+    let filas = document.getElementsByTagName('tr');
+    for (let i = 0; i < filas.length; i++) {
+
+        let cols = filas[i].querySelectorAll('td,th');
+
+        let csvrow = [];
+        for (let j = 1; j < cols.length-2; j++) {
+            csvrow.push(cols[j].innerHTML);
+        }
+
+        csv_data.push(csvrow.join(";"));
+    }
+    csv_data = csv_data.join('\n');
+    descargarCSV(csv_data, "ventas.csv");
+}
+
 function descargarCSV(csv_data, filename) {
     let bom = "\uFEFF";
     let CSVFile = new Blob([bom + csv_data], {type: "text/csv;charset=utf-8;"});
