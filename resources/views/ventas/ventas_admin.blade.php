@@ -1,7 +1,7 @@
 @include('navbar_admin')
 
 <head>
-    <title>Mis ventas</title>
+    <title>Tabla de gestion de ventas</title>
 </head>
 
 <div class="contenido">
