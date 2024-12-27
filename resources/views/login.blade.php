@@ -19,7 +19,7 @@
                 <h1>Login</h1>
                 <h2>Ingrese sus credenciales para acceder al sistema</h2>
 
-                <form class="formulario" action="./login" method="post">
+                <form class="formulario" action="/login" method="post">
                     @csrf
                     <div class="row">
                         <div class="column">
@@ -55,7 +55,7 @@
                 </form>
             </div>
             <div class="column lado-der">
-                <img src="../img/login_img2.webp" alt="Imagen robada de login">
+                <img src="/img/login_img2.webp" alt="Imagen robada de login">
             </div>
         </div>
     </div>
