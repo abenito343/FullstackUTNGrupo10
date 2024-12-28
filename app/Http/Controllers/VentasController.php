@@ -6,6 +6,7 @@ use App\Models\Venta;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\DetalleVenta;
 
 class VentasController extends Controller
 {
@@ -46,7 +47,7 @@ class VentasController extends Controller
         return view('ventas.vender', $parametros);
     }
 
-    public function store(Request $request)
+    public function store1(Request $request)
     {
         $request->validate([
             // Validaciones necesarias
@@ -57,6 +58,35 @@ class VentasController extends Controller
         return redirect()->route('ventas.index')
                          ->with('success', 'Venta registrada exitosamente.');
     }
+
+    public function store(Request $request)
+    {
+        // Validar y procesar los datos del carrito
+        $carrito = $request->input('carrito');
+        $total = $request->input('total');
+    
+        // Obtener el usuario autenticado
+        $usuario_id = auth()->user()->id;
+    
+        // Guardar la venta en la base de datos
+        $venta = new Venta();
+        $venta->total = $total;
+        $venta->usuario_id = $usuario_id; // Asignar el usuario_id
+        $venta->save();
+    
+        // Guardar los detalles de la venta
+        foreach ($carrito as $item) {
+            $detalle = new DetalleVenta();
+            $detalle->venta_id = $venta->id;
+            $detalle->producto_id = $item['id'];
+            $detalle->cantidad = $item['cantidad'];
+            $detalle->subTotal = $item['precio'];
+            $detalle->save();
+        }
+    
+        return response()->json(['success' => true]);
+    }
+
 
     public function show(Venta $venta)
     {

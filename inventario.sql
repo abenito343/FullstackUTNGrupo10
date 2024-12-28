@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2024 a las 20:01:02
+-- Tiempo de generación: 28-12-2024 a las 21:08:23
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,6 +45,27 @@ INSERT INTO `categorias` (`id`, `nombre`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `detalle_ventas`
+--
+
+CREATE TABLE `detalle_ventas` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `venta_id` int(10) UNSIGNED NOT NULL,
+  `producto_id` int(10) UNSIGNED NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `subTotal` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_ventas`
+--
+
+INSERT INTO `detalle_ventas` (`id`, `venta_id`, `producto_id`, `cantidad`, `subTotal`) VALUES
+(1, 5, 1, 6, 900);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `facturas`
 --
 
@@ -77,21 +98,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `img`, `categoria_id`, `proveedor_id`) VALUES
-(1, 'Don satur saladas', NULL, 900, 100, 'img/donsatursaladas.jpg', 1, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `productoxventa`
---
-
-CREATE TABLE `productoxventa` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `venta_id` int(10) UNSIGNED NOT NULL,
-  `producto_id` int(10) UNSIGNED NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `subTotal` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+(1, 'Don satur saladas', 'gattetitas de grasa saladas don satur', 900, 100, 'img/donsatursaladas.jpg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +119,8 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`id`, `razonSocial`, `direccion`, `telefono`, `correo`) VALUES
-(1, 'Don Satur', 'calle falsa 123', '49151515', 'donsatur@hotmail.com');
+(1, 'Don Satur', 'calle falsa 123', '49151515', 'donsatur@hotmail.com'),
+(2, 'arcor', 'arcor 123', '45123123', 'arcor@gmai.com');
 
 -- --------------------------------------------------------
 
@@ -135,7 +143,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nickname`, `password`, `nombre`, `apellido`, `dni`, `rol`) VALUES
-(1, 'admin', '$2y$10$SQSmB0O9HBXcLFSe5U2s.uLSC87/.FU1x989DC.rTDfGLqnGZrXhm', 'admin', 'admin', 45878987, 'admin');
+(1, 'admin', '$2y$10$SQSmB0O9HBXcLFSe5U2s.uLSC87/.FU1x989DC.rTDfGLqnGZrXhm', 'admin', 'admin', 45878987, 'admin'),
+(2, 'juanl', '$2y$10$8zKWw9olqZJyWcoGreTFoeZ5lP16tkT7DsvKQnnXsse5q0uQKmTCW', 'juan', 'lopez', 41569896, 'vendedor');
 
 -- --------------------------------------------------------
 
@@ -145,10 +154,17 @@ INSERT INTO `usuarios` (`id`, `nickname`, `password`, `nombre`, `apellido`, `dni
 
 CREATE TABLE `ventas` (
   `id` int(10) UNSIGNED NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` date NOT NULL DEFAULT current_timestamp(),
   `total` double UNSIGNED NOT NULL,
   `usuario_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `fecha`, `total`, `usuario_id`) VALUES
+(5, '2024-12-28', 5400, 2);
 
 --
 -- Índices para tablas volcadas
@@ -159,6 +175,14 @@ CREATE TABLE `ventas` (
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `detalle_ventas`
+--
+ALTER TABLE `detalle_ventas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_ventas_has_productos_productos1_idx` (`producto_id`),
+  ADD KEY `fk_ventas_has_productos_ventas1_idx` (`venta_id`);
 
 --
 -- Indices de la tabla `facturas`
@@ -174,14 +198,6 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_productos_categorias1_idx` (`categoria_id`),
   ADD KEY `fk_productos_proveedores1_idx` (`proveedor_id`);
-
---
--- Indices de la tabla `productoxventa`
---
-ALTER TABLE `productoxventa`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_ventas_has_productos_productos1_idx` (`producto_id`),
-  ADD KEY `fk_ventas_has_productos_ventas1_idx` (`venta_id`);
 
 --
 -- Indices de la tabla `proveedores`
@@ -213,6 +229,12 @@ ALTER TABLE `categorias`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `detalle_ventas`
+--
+ALTER TABLE `detalle_ventas`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
@@ -225,32 +247,33 @@ ALTER TABLE `productos`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `productoxventa`
---
-ALTER TABLE `productoxventa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `detalle_ventas`
+--
+ALTER TABLE `detalle_ventas`
+  ADD CONSTRAINT `fk_ventas_has_productos_productos1` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
+  ADD CONSTRAINT `fk_ventas_has_productos_ventas1` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`id`);
 
 --
 -- Filtros para la tabla `facturas`
@@ -264,13 +287,6 @@ ALTER TABLE `facturas`
 ALTER TABLE `productos`
   ADD CONSTRAINT `fk_productos_categorias1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
   ADD CONSTRAINT `fk_productos_proveedores1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedores` (`id`);
-
---
--- Filtros para la tabla `productoxventa`
---
-ALTER TABLE `productoxventa`
-  ADD CONSTRAINT `fk_ventas_has_productos_productos1` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
-  ADD CONSTRAINT `fk_ventas_has_productos_ventas1` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`id`);
 
 --
 -- Filtros para la tabla `ventas`

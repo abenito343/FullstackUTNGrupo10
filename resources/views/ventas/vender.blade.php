@@ -59,7 +59,7 @@
                 </tbody>
             </table>
             <div class="duplaBoton2">
-                <button type="submit" class="btn btn-success">Realizar Venta</button>
+                <button id="realizarVenta" type="submit" class="btn btn-success">Realizar Venta</button>
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><h6>Total: $ <span id="total">0</span></h6></span>
                 </div>
@@ -110,7 +110,7 @@
             const descripcion = $('#descripcion').val();
             const subtotal = precio * cantidad;
             // Agregar al carrito
-            carrito.push({ nombre: nombreProducto, descripcion, precio, cantidad, subtotal, imagenProducto });
+            carrito.push({ id: productoId, nombre: nombreProducto, descripcion, precio, cantidad, subtotal, imagenProducto });
             actualizarCarrito();
         } else {
             alert('Selecciona un producto y una cantidad');
@@ -152,5 +152,33 @@
     document.getElementById('vaciarTabla').addEventListener('click', function() {
         carrito = [];
         actualizarCarrito();
+    });
+
+
+     // Función para realizar la venta
+     document.getElementById('realizarVenta').addEventListener('click', function() {
+        if (carrito.length > 0) {
+            $.ajax({
+                url: '/ventas', // Ruta para guardar la venta
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // Token CSRF para seguridad
+                    carrito: carrito,
+                    total: total
+                },
+                success: function(response) {
+                    alert('Venta realizada con éxito.');
+                    // Limpiar el carrito y el total
+                    carrito = [];
+                    total = 0;
+                    actualizarCarrito();
+                },
+                error: function() {
+                    alert('Error al realizar la venta.');
+                }
+            });
+        } else {
+            alert('El carrito está vacío.');
+        }
     });
 </script>

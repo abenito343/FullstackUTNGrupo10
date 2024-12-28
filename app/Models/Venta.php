@@ -9,14 +9,13 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Venta extends Model
 {
-
     protected $table = 'ventas';
     public $timestamps = false;
 
     protected $fillable = [
-        'fecha',        // Campo fecha
-        'total',        // Campo total
-        'user_id',      // Relación con el usuario
+        'fecha',
+        'total',
+        'usuario_id',
     ];
 
     public function usuario()
