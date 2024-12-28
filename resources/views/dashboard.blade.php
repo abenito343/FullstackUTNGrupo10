@@ -39,12 +39,12 @@
         <div class="row">
             <div class="contenedor-tarjetas">
                 <div class="col">
-                    <form action="/productos" method="get">
+                    <form action="/producto" method="get">
                         <button class="boton-dashboard" type="submit">Tabla de gestion de productos</button>
                     </form>
                 </div>
                 <div class="col">
-                    <form action="/productos/create" method="get">
+                    <form action="/producto/create" method="get">
                         <button class="boton-dashboard" type="submit">Registro de nuevo producto</button>
                     </form>
                 </div>

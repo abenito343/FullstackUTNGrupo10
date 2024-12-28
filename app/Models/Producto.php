@@ -15,6 +15,7 @@ class Producto extends Model
 
     protected $fillable = [
         'nombre',       // Campo nombre
+        'descripcion',  // Campo descripción
         'precio',       // Campo precio
         'stock',        // Campo stock
         'img',          // Campo imagen

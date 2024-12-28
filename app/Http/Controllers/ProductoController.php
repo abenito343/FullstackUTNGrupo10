@@ -65,6 +65,7 @@ class ProductoController extends Controller
         // Validación de los datos recibidos
         $datos = $request->validate([
             "nombre" => ['required'],
+            "descripcion" => ['required'],
             "precio" => ['required'],
             "stock" => ['required'],
             "img" => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
