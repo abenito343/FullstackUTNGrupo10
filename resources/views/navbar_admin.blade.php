@@ -30,7 +30,7 @@
                         {{ Auth::user()->nickname }}
                         </li>
                         <li>
-                            <a href="/logout">LogOut</a>
+                            <a href="/logout">Cerrar sesión</a>
                         </li>
                     </ul>
                 </div>
