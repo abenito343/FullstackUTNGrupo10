@@ -27,6 +27,34 @@
                 </div>
             </div>
         </div>
-        <div class="horizontal-line"></div>
+        <div class="row">
+            <h2 class="titulo-seccion">Grupo 10</h2><a href="https://github.com/abenito343/FullstackUTNGrupo10.git" target="_blank">GitHub</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gomez, Luis Gonzalo</td>
+                        <td>gonzalogomez5847@gmail.com</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Porcel, Gustavo</td>
+                        <td>gporcelarias@frba.utn.edu.ar</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Benito, Ariel</td>
+                        <td>abenito@frba.utn.edu.ar</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
