@@ -47,18 +47,6 @@ class VentasController extends Controller
         return view('ventas.vender', $parametros);
     }
 
-    public function store1(Request $request)
-    {
-        $request->validate([
-            // Validaciones necesarias
-        ]);
-
-        Venta::create($request->all());
-
-        return redirect()->route('ventas.index')
-                         ->with('success', 'Venta registrada exitosamente.');
-    }
-
     public function store(Request $request)
     {
         // Validar y procesar los datos del carrito
@@ -92,6 +80,8 @@ class VentasController extends Controller
     {
         return view('ventas.detalleVentas', compact('venta'));
     }
+
+    
 
     public function edit(Venta $venta)
     {

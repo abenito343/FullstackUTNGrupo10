@@ -41,32 +41,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td><a href="/detalleVentas"><i class="las la-file-alt"></i></a></td>
-            <td><a href=""><i class="las la-print"></i></a></td>
-          </tr>
-          <tr>
-            <td></td>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td><a href="/detalleVentas"><i class="las la-file-alt"></i></a></td>
-            <td><a href=""><i class="las la-print"></i></a></td>
-          </tr>
-          <tr>
-            <td></td>
-            <th scope="row">3</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td><a href="/detalleVentas"><i class="las la-file-alt"></i></a></td>
-            <td><a href="/detalleVentas"><i class="las la-print"></i></a></td>
-          </tr>
-          
-        </tbody>
+          @foreach($ventas as $venta)
+              <tr>
+                  <td></td>
+                  <td>{{ $venta->id }}</td>
+                  <td>{{ $venta->fecha }}</td>
+                  <td>{{ $venta->total }}</td>
+                  <td><a href="{{ route('ventas.show', $venta->id) }}" class="btn btn-info">Ver Detalle</a></td>
+                  <td><a href="{{ route('ventas.show', $venta->id) }}" class="btn btn-secondary">Imprimir Factura</a></td>
+              </tr>
+          @endforeach
+      </tbody>
     </table>
     @if($ventas->isEmpty())
         <div class="alert alert-warning text-center">No se encontraron resultados</div>
