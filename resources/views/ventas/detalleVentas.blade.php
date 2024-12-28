@@ -33,8 +33,8 @@
                         <td></td>
                         <td>{{ $detalle->producto->nombre }}</td>
                         <td>{{ $detalle->cantidad }}</td>
-                        <td>{{ $detalle->producto->precio }}</td>
-                        <td>{{ $detalle->subTotal }}</td>
+                        <td>${{ $detalle->producto->precio }}</td>
+                        <td>${{ $detalle->subTotal }}</td>
                     </tr>
                 @endforeach
             </tbody>
