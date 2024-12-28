@@ -98,9 +98,6 @@
                     </form>
                 </div>
                 <div class="col">
-                    <form action="/ventas" method="get">
-                        <button class="boton-dashboard boton-dashboard-azul" type="submit">Ventas por usuario</button>
-                    </form>
                 </div>
             </div>
         </div>
