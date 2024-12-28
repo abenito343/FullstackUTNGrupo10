@@ -32,36 +32,7 @@
         <button>Buscar</button>
     </form>
     <div class="horizontal-line"></div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($categorias as $categoria)
-                <tr>
-                    <td>{{ $categoria->nombre }}</td>
-                    <td>{{ $categoria->descripcion }}</td>
-                    <td>
-                        <form action="{{ route('categorias.edit', $categoria) }}" method="get">
-                            <button><i class="las la-edit"></i></button>
-                        </form>
-                    </td>
-                    <td class="icono-tabla">
-                        <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button><i class="las la-trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
     @if(request()->has('busqueda'))
         @php
             $categorias = $categorias->filter(function($categoria) {
@@ -70,8 +41,40 @@
             });
         @endphp
     @endif
+
     @if($categorias->isEmpty())
         <div class="alert alert-warning text-center">No se encontraron resultados</div>
+    @else
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($categorias as $categoria)
+                    <tr>
+                        <td>{{ $categoria->nombre }}</td>
+                        <td>{{ $categoria->descripcion }}</td>
+                        <td>
+                            <form action="{{ route('categorias.edit', $categoria) }}" method="get">
+                                <button><i class="las la-edit"></i></button>
+                            </form>
+                        </td>
+                        <td class="icono-tabla">
+                            <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button><i class="las la-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     @endif
 </div>
 <script type="text/javascript" src="/js/exportarCSV.js"></script>
