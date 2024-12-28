@@ -70,6 +70,12 @@ class VentasController extends Controller
             $detalle->cantidad = $item['cantidad'];
             $detalle->subTotal = $item['precio'] * $item['cantidad'];
             $detalle->save();
+
+            // Actualizar el stock del producto
+            $producto = Producto::find($item['id']);
+            $producto->stock -= $item['cantidad'];
+            $producto->save();
+    
         }
     
         return response()->json(['success' => true]);
