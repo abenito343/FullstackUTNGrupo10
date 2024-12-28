@@ -76,9 +76,15 @@ class VentasController extends Controller
     }
 
 
-    public function show(Venta $venta)
+    public function show($id)
     {
-        return view('ventas.detalleVentas', compact('venta'));
+        // Obtener la venta por ID
+        $venta = Venta::findOrFail($id);
+    
+        // Obtener los detalles de la venta
+        $detalles = $venta->detalles; // Asumiendo que tienes una relación 'detalles' en el modelo Venta
+    
+        return view('ventas.detalleVentas', compact('venta', 'detalles'));
     }
 
     
