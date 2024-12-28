@@ -49,7 +49,7 @@
             <tbody>
             @foreach($productos as $producto)
             <tr>
-                <td>{{ $producto->nombre }}</th>
+                <td>{{ $producto->nombre }}</td>
                 <td>{{ $producto->descripcion }}</td>
                 <td>{{ $producto->precio }}</td>
                 <td>{{ $producto->stock }}</td>
@@ -57,12 +57,12 @@
                 <td>{{$producto->categoria->nombre}}</td>
                 <td>{{ $producto->proveedor->razonSocial }}</td>
                 <td>                        
-                    <form action="/producto/{{ $producto->id }}/edit" method="get">
+                    <form class="icono-tabla" action="/producto/{{ $producto->id }}/edit" method="get">
                         <button><i class="las la-edit"></i></button>
                     </form>
                 </td>
-                <td class="icono-tabla">
-                    <form action="/producto/{{ $producto->id }}" method="post">
+                <td>
+                    <form class="icono-tabla" action="/producto/{{ $producto->id }}" method="post">
                         @csrf
                         @method("DELETE")
                         <button><i class="las la-trash"></i></button>

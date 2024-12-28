@@ -60,12 +60,12 @@
                         <td>{{ $categoria->nombre }}</td>
                         <td>{{ $categoria->descripcion }}</td>
                         <td>
-                            <form action="{{ route('categorias.edit', $categoria) }}" method="get">
+                            <form class="icono-tabla" action="{{ route('categorias.edit', $categoria) }}" method="get">
                                 <button><i class="las la-edit"></i></button>
                             </form>
                         </td>
-                        <td class="icono-tabla">
-                            <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
+                        <td>
+                            <form class="icono-tabla" action="{{ route('categorias.destroy', $categoria) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button><i class="las la-trash"></i></button>

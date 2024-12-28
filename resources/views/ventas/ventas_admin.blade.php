@@ -2,14 +2,11 @@
 
 <head>
     <title>Tabla de gestion de ventas</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/vfs_fonts.js"></script>
 </head>
 
 <div class="contenido">
-    @if (session()->has("success"))
-        <div class="container">
-            <div class="alert alert-success text-center">{{ session("success") }}</div>
-        </div>
-    @endif
     <div class="horizontal-line"></div>
     <div class="nav2">
         <div class="container-fluid">
@@ -51,8 +48,8 @@
             <td>{{ $venta->id }}</td>
             <td>{{ $venta->fecha }}</td>
             <td>{{ $venta->total }}</td>
-            <td><a href="/detalleVentas"><i class="las la-file-alt"></i></a></td>
-            <td><a href=""><i class="las la-print"></i></a></td>
+            <td><a href="/detalle_venta_admin/{{ $venta->id }}"><i class="las la-file-alt"></i></a></td>
+            <td><button type="button" class="btn btn-primary" onclick="downloadPdf({{$venta->id}}, {{$venta->fecha}}, {{$venta->total}})"><i class="las la-print"></i></button></td>
           </tr>
           @endforeach
         </tbody>
@@ -63,3 +60,4 @@
 </div>
 
 <script type="text/javascript" src="/js/exportarCSV.js"></script>
+<script src="/js/exportarPDF.js" type="text/javascript"></script>

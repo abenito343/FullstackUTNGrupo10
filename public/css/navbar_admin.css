@@ -172,19 +172,14 @@ nav.nav ul{
     width: 55%;
 }
 
-.boton-edit
-{
-    color: blue;
-}
-
-.boton-delete
-{
-    color: red;
+.contenido form.icono-tabla{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav2{
     display: flex;
-    height: 40px;
     display: flex;
     font-size:large;
     align-items: center;
@@ -195,7 +190,7 @@ nav.nav ul{
 .nav2 button{
     margin-left: 300px;
     white-space: nowrap;
-    background-color: rgb(159, 38, 173);   
+    background-color: rgb(159, 38, 173);
 }
 .nav2 h3{
     text-decoration: none;
@@ -208,23 +203,29 @@ nav.nav ul{
 
 .table form button {
     background-color: white;
-    padding: 5px 10px;  
-    height: 40px;  
+    padding: 5px 10px;
+    height: 40px;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
 }
 
 /* Alinea el contenido de las celdas */
 .table td {
-    vertical-align: middle; 
+    vertical-align: middle;
+    align-self: center;
 }
 
 .table form button i {
-    color: black;  
-    font-size: 30px;  
+    color: black;
+    font-size: 30px;
 }
 
 .nav2 form{
     margin-right: 10%;
+}
+
+.total_factura{
+    text-align: center;
+    font-weight: bolder;
 }

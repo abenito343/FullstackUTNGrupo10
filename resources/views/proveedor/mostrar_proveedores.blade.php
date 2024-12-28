@@ -51,12 +51,12 @@
             <td>{{ $proveedor->telefono }}</td>
             <td>{{ $proveedor->correo }}</td>
             <td>                        
-                <form action="/proveedor/{{ $proveedor->id }}/edit" method="get">
+                <form class="icono-tabla" action="/proveedor/{{ $proveedor->id }}/edit" method="get">
                     <button><i class="las la-edit"></i></button>
                 </form>
             </td>
-            <td class="icono-tabla">
-                <form action="/proveedor/{{ $proveedor->id }}" method="post">
+            <td>
+                <form class="icono-tabla" action="/proveedor/{{ $proveedor->id }}" method="post">
                     @csrf
                     @method("DELETE")
                     <button><i class="las la-trash"></i></button>

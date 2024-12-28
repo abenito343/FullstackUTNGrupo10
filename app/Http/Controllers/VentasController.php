@@ -39,6 +39,22 @@ class VentasController extends Controller
         return view('ventas.ventas_admin', $parametros);
     }
 
+    public function detalle_venta_admin(Venta $venta)
+    {
+        $detalles = DB::table('ventas')
+            ->join('productoxventa', 'ventas.id', '=', 'productoxventa.venta_id')
+            ->join('productos', 'productoxventa.producto_id', '=', 'productos.id')
+            ->select('ventas.id as factura', 'ventas.fecha', 'ventas.total', 'productos.nombre', 'productos.precio', 'productoxventa.cantidad', 'productoxventa.subtotal')
+            ->where('ventas.id', '=', $venta->id)
+            ->get();
+
+        $parametros=[
+            "detalles"=>$detalles
+        ];
+
+        return view('ventas.detalle_venta_admin', $parametros);
+    }
+
     public function create()
     {
         $parametros=[

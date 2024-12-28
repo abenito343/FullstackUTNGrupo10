@@ -78,3 +78,4 @@ Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store')
 Route::get('/ventas_admin', [VentasController::class, 'ventas_admin'])->name('ventas_admin');
 Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');
 Route::get('/ventas/{id}', [VentasController::class, 'show'])->name('ventas.show');
+Route::get('/detalle_venta_admin/{venta}', [VentasController::class, 'detalle_venta_admin'])->name('detalle_venta_admin');

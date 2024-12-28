@@ -69,17 +69,17 @@
                     <td>{{ $usuario->nickname }}</td>
                     <td>{{ $usuario->rol }}</td>
                     <td>                        
-                        <form action="/usuario/{{ $usuario->id }}/edit" method="get">
+                        <form class="icono-tabla" action="/usuario/{{ $usuario->id }}/edit" method="get">
                             <button><i class="las la-edit"></i></button>
                         </form>
                     </td>
                     <td>                        
-                        <form action="/usuario/{{ $usuario->id }}/password_edit" method="get">
+                        <form class="icono-tabla" action="/usuario/{{ $usuario->id }}/password_edit" method="get">
                             <button><i class="las la-edit"></i></button>
                         </form>
                     </td>
-                    <td class="icono-tabla">
-                        <form action="/usuario/{{ $usuario->id }}" method="post">
+                    <td>
+                        <form class="icono-tabla" action="/usuario/{{ $usuario->id }}" method="post">
                             @csrf
                             @method("DELETE")
                             <button><i class="las la-trash"></i></button>
