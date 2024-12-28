@@ -32,7 +32,7 @@
         <thead>
           <tr>
             <th scope="col">Nombre Vendedor</th>
-            <th scope="col">Usuario Vendedor</th>
+            <th scope="col">Nickname</th>
             <th scope="col">ID venta</th>
             <th scope="col">Fecha</th>
             <th scope="col">Total</th>

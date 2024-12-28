@@ -140,8 +140,13 @@ nav.nav ul{
     margin: 0 auto;
     text-align: center;
 }
+
 .table a{
     color: black;
+}
+
+.table th{
+    max-width: 100px;
 }
 
 .buscador{
