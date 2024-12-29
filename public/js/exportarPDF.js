@@ -1,7 +1,20 @@
-function downloadPdf(id, fecha, total) {
-    var nombre_archivo = 'Detalle factura ' + id;
-    console.log(fecha);
-    var fecha_venta = 'Fecha: ' + fecha;
+function downloadPdf(detalles) {
+    var head = detalles[0];
+
+    var nombre_archivo = 'Detalle factura ' + head.factura;
+    var fecha_venta = 'Fecha: ' + head.fecha;
+
+    var body_conceptos = [
+        ['Codigo', 'Nombre', 'Cantidad', 'Precio unitario', 'Subtotal']
+    ]
+
+    detalles.forEach(d => {
+        let fila = [d.codigo, d.nombre, d.cantidad, '$'+d.precio, '$'+d.subtotal];
+
+        body_conceptos.push(fila);        
+    });
+    
+    body_conceptos.push(['', '', '', 'TOTAL', '$'+head.total]);
 
     var docDefinition = {
         language: "es",
@@ -14,12 +27,10 @@ function downloadPdf(id, fecha, total) {
             seccion: {
                 margin: [0, 10]
             },
-		    tableHeader: {
-                background: 'whitesmoke',
-                fontSize: 13,
-                color: 'black',
-                margin: [0, 10]
-		    }
+            tabla: {
+                margin: [0, 50],
+                alignment: 'center'
+            }
         },
         content: [
             {
@@ -54,7 +65,7 @@ function downloadPdf(id, fecha, total) {
                         ['Informacion del cliente', 'Informacion de la venta'],
                         ['Cliente: nombre cliente', 'Condicion de venta: contado'],
                         ['Direccion: direccion cliente', 'Tipo: productos'],
-                        ['DNI: DNI cliente', 'Nro factura: 1'],
+                        ['DNI: DNI cliente', 'Nro factura: '+head.factura],
                         ['Email: email cliente',''],
                         ['condicion: Consumidor Final','']
                     ]
@@ -63,15 +74,11 @@ function downloadPdf(id, fecha, total) {
             },
             'Conceptos de la venta',
             {
-                style: 'seccion',
+                style: 'tabla',
                 table: {
                     headerRows: 1,
                     widths: ['*', '*', '*', '*', '*'],
-                    body: [
-                        ['Codigo', 'Nombre', 'Cantidad', 'Precio unitario', 'Subtotal'],
-                        ['1', 'nom', '2', '$25', '$50'],
-                        ['', '', '', 'TOTAL', '$'+total]
-                    ]
+                    body: body_conceptos
                 },
                 layout: {
                     fillColor: 'whitesmoke'

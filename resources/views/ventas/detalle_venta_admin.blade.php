@@ -12,6 +12,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col"><h3>Detalle de la venta</h3></div>
+                <div class="col boton"><button type="button" class="btn btn-primary" onclick="downloadPdf({{$detalles}})">Descargar PDF</button></div>
 			</div>
             <div class="input-group flex-nowrap">
                 <span class="input-group-text" id="addon-wrapping">Factura #{{$detalles[0]->factura}} - Fecha: {{$detalles[0]->fecha}} </span>
@@ -23,6 +24,7 @@
     <table class="table">
         <thead>
           <tr>
+			<th scope="col">Codigo del producto</th>
 			<th scope="col">Nombre del producto</th>
 			<th scope="col">Cantidad</th>
 			<th scope="col">Precio Unidad</th>
@@ -32,13 +34,15 @@
         <tbody>          
 			@foreach($detalles as $detalle)
 			<tr>
+				<td>{{ $detalle->codigo }}</td>
 				<td>{{ $detalle->nombre }}</td>
 				<td>{{ $detalle->cantidad }}</td>
-				<td>{{ $detalle->precio }}</td>
-				<td>{{ $detalle->subtotal }}</td>
+				<td>${{ $detalle->precio }}</td>
+				<td>${{ $detalle->subtotal }}</td>
 			</tr>
 			@endforeach
 			<tr>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td class="total_factura">Total</td>
