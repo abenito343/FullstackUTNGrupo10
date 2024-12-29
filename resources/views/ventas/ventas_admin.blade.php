@@ -47,7 +47,7 @@
             <td>{{ $venta->fecha }}</td>
             <td>{{ $venta->total }}</td>
             <td><a href="/detalle_venta_admin/{{ $venta->id }}"><i class="las la-file-alt"></i></a></td>
-            <td><a href="/detalle_venta_admin/{{ $venta->id }}/pdf"><i class="las la-print"></i></a></td>
+            <td><a href="/detalle_venta_admin/{{ $venta->id }}"><i class="las la-print"></i></a></td>
           </tr>
           @endforeach
         </tbody>

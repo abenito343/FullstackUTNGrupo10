@@ -42,11 +42,11 @@ class VentasController extends Controller
     public function detalle_venta_admin(Venta $venta)
     {
         $detalles = DB::table('ventas')
-            ->join('productoxventa', 'ventas.id', '=', 'productoxventa.venta_id')
-            ->join('productos', 'productoxventa.producto_id', '=', 'productos.id')
+            ->join('detalle_ventas', 'ventas.id', '=', 'detalle_ventas.venta_id')
+            ->join('productos', 'detalle_ventas.producto_id', '=', 'productos.id')
             ->select('ventas.id as factura', 'ventas.fecha', 'ventas.total',
                 'productos.id as codigo', 'productos.nombre', 'productos.precio',
-                'productoxventa.cantidad', 'productoxventa.subtotal')
+                'detalle_ventas.cantidad', 'detalle_ventas.subtotal')
             ->where('ventas.id', '=', $venta->id)
             ->get();
 
