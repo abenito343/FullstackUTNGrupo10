@@ -78,6 +78,10 @@ class ProductoController extends Controller
             "mimes" => "La imagen debe ser de tipo jpeg, png, jpg, gif o svg",
             "max" => "La imagen no debe superar los 2 MB"
         ]);
+
+            
+            $datos['nombre'] = ucwords(strtolower($datos['nombre']));
+            $datos['descripcion'] = ucfirst(strtolower($datos['descripcion']));
     
         // Verificar si se subió un archivo de imagen
         if ($request->hasFile('img') && $request->file('img')->isValid()) {
@@ -150,45 +154,45 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Producto $producto)
-{
-    // Validación de los datos recibidos
-    $datos = $request->validate([
-        "img" => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'], // 'nullable' para permitir que no sea obligatorio
-        "categoria" => ['required'],
-        "proveedor" => ['required']
-    ], 
-    [
-        "required" => "Este campo es obligatorio",
-        "image" => "El archivo debe ser una imagen válida",
-        "mimes" => "La imagen debe ser de tipo jpeg, png, jpg, gif o svg",
-        "max" => "La imagen no debe superar los 2 MB"
-    ]);
+    {
+        // Validación de los datos recibidos
+        $datos = $request->validate([
+            "img" => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'], // 'nullable' para permitir que no sea obligatorio
+            "categoria" => ['required'],
+            "proveedor" => ['required']
+        ], 
+        [
+            "required" => "Este campo es obligatorio",
+            "image" => "El archivo debe ser una imagen válida",
+            "mimes" => "La imagen debe ser de tipo jpeg, png, jpg, gif o svg",
+            "max" => "La imagen no debe superar los 2 MB"
+        ]);
 
-    $producto->nombre = $request["nombre"];
-    $producto->descripcion = $request["descripcion"];
-    $producto->precio = $request["precio"];
-    $producto->stock = $request["stock"];
-    $producto->categoria_id = $request["categoria"];
-    $producto->proveedor_id = $request["proveedor"];
+        $producto->nombre = ucwords(strtolower($request["nombre"]));
+        $producto->descripcion = ucfirst(strtolower($request["descripcion"]));
+        $producto->precio = $request["precio"];
+        $producto->stock = $request["stock"];
+        $producto->categoria_id = $request["categoria"];
+        $producto->proveedor_id = $request["proveedor"];
 
-    if ($request->hasFile('img') && $request->file('img')->isValid()) {
-        // Obtener el archivo de imagen
-        $image = $request->file('img');
+        if ($request->hasFile('img') && $request->file('img')->isValid()) {
+            // Obtener el archivo de imagen
+            $image = $request->file('img');
+            
+            $imageName = $image->getClientOriginalName(); 
         
-        $imageName = $image->getClientOriginalName(); 
-    
-        // Mover la imagen a la carpeta 'public/img'
-        $image->move(public_path('img'), $imageName);
-    
-        // Guardar la ruta relativa de la imagen en la base de datos
-        $producto->img = 'img/' . $imageName;  // Guarda la ruta relativa en la base de datos
+            // Mover la imagen a la carpeta 'public/img'
+            $image->move(public_path('img'), $imageName);
+        
+            // Guardar la ruta relativa de la imagen en la base de datos
+            $producto->img = 'img/' . $imageName;  // Guarda la ruta relativa en la base de datos
+        }
+
+        // Guardar el producto actualizado en la base de datos
+        $producto->save();
+
+        return redirect("/producto")->with("success", "Se actualizó el producto correctamente");
     }
-
-    // Guardar el producto actualizado en la base de datos
-    $producto->save();
-
-    return redirect("/producto")->with("success", "Se actualizó el producto correctamente");
-}
 
 
     /**

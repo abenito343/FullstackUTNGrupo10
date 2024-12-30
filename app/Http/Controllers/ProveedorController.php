@@ -75,6 +75,9 @@ class ProveedorController extends Controller
             ]
         );
 
+        $datos['razonSocial'] = ucwords(strtolower($datos['razonSocial']));
+        $datos['direccion'] = ucwords(strtolower($datos['direccion']));
+
         Proveedor::create($datos);
     
         return response()->redirectTo("/proveedor")->with("success", "Se registro con exito!");

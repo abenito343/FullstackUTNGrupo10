@@ -24,7 +24,10 @@ class CategoriaController extends Controller
             'nombre' => 'required',
         ]);
 
-        Categoria::create($request->all());
+        $data = $request->all();
+        $data['nombre'] = ucwords($data['nombre']);
+
+        Categoria::create($data);
 
         return redirect()->route('categorias.index')
                          ->with('success', 'Categoría creada exitosamente.');
