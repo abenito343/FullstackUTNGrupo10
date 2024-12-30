@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2024 a las 21:08:23
+-- Tiempo de generación: 30-12-2024 a las 18:51:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,9 +38,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Cocina y Hogar2', 'Para la casa'),
-(2, 'olageR', 'Para el amigo'),
-(3, 'Jardin', 'herramientas y utileria de jardin');
+(1, 'Comestible seco', 'Productos comestibles secos'),
+(2, 'Golosinas', 'Productos de golosinas'),
+(3, 'Jardin', 'Herramientas y utilería de jardín');
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,9 @@ CREATE TABLE `detalle_ventas` (
 --
 
 INSERT INTO `detalle_ventas` (`id`, `venta_id`, `producto_id`, `cantidad`, `subTotal`) VALUES
-(1, 5, 1, 6, 900);
+(1, 1, 1, 1, 900),
+(2, 1, 2, 1, 1000),
+(3, 1, 3, 1, 2000);
 
 -- --------------------------------------------------------
 
@@ -98,7 +100,9 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `img`, `categoria_id`, `proveedor_id`) VALUES
-(1, 'Don satur saladas', 'gattetitas de grasa saladas don satur', 900, 100, 'img/donsatursaladas.jpg', 1, 1);
+(1, 'Galletas saladas Don Satur', 'Galletas saladas de grasa marca Don Satur', 900, 99, 'img/donsatursaladas.jpg', 1, 1),
+(2, 'Alfajor Jorgito', 'Jorgito simple', 1000, 999, 'img/jorgito.jpg', 2, 3),
+(3, 'Chocolate Milka', 'Milka oreo', 2000, 499, 'img/milka.jpg', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -119,8 +123,9 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`id`, `razonSocial`, `direccion`, `telefono`, `correo`) VALUES
-(1, 'Don Satur', 'calle falsa 123', '49151515', 'donsatur@hotmail.com'),
-(2, 'arcor', 'arcor 123', '45123123', 'arcor@gmai.com');
+(1, 'Don Satur', 'Calle falsa 123', '49151515', 'donsatur@hotmail.com'),
+(2, 'Milka', 'San Martin 123', '11456789', 'milka@gmail.com'),
+(3, 'Jorgito', 'Maipu 123', '11987654', 'jorgito@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -144,7 +149,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nickname`, `password`, `nombre`, `apellido`, `dni`, `rol`) VALUES
 (1, 'admin', '$2y$10$SQSmB0O9HBXcLFSe5U2s.uLSC87/.FU1x989DC.rTDfGLqnGZrXhm', 'admin', 'admin', 45878987, 'admin'),
-(2, 'juanl', '$2y$10$8zKWw9olqZJyWcoGreTFoeZ5lP16tkT7DsvKQnnXsse5q0uQKmTCW', 'juan', 'lopez', 41569896, 'vendedor');
+(3, 'CarlosB', '$2y$10$3OEIouA1LeUPyvE6jglQoe2zVJjAp.rWIIFTcS42IEKP7cfU5giz2', 'Carlos', 'Baute', 45878969, 'admin'),
+(4, 'JuanC', '$2y$10$aS1qnLLOaOBvART7m5.95uJJeWtxwsO6u03z3EFuEoIBvnoCEXMrG', 'Juan', 'Carlos', 48596596, 'vendedor');
 
 -- --------------------------------------------------------
 
@@ -164,7 +170,7 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `fecha`, `total`, `usuario_id`) VALUES
-(5, '2024-12-28', 5400, 2);
+(1, '2024-12-30', 3900, 4);
 
 --
 -- Índices para tablas volcadas
@@ -232,7 +238,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `detalle_ventas`
 --
 ALTER TABLE `detalle_ventas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas`
@@ -244,25 +250,25 @@ ALTER TABLE `facturas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

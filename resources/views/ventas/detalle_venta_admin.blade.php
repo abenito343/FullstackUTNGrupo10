@@ -54,3 +54,10 @@
 </div>
 
 <script src="/js/exportarPDF.js" type="text/javascript"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        @if(request()->get('download') == 'pdf')
+            downloadPdf(@json($detalles));
+        @endif
+    });
+</script>
