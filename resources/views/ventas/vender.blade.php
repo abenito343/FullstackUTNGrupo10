@@ -9,7 +9,7 @@
         <form action="" method="POST" class="vender">
             @csrf
             <div class="datosProducto">
-                <div class="horizontal-line"></div>
+
                 <h3 style="color: rgb(56, 125, 235);">Vender</h3>
                 <div class="horizontal-line"></div>
                 
@@ -22,7 +22,7 @@
                 </select><br>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="descripcion" placeholder="Descripción" disabled>
+                    <textarea class="form-control" id="descripcion" placeholder="Descripción" disabled style="height: auto;"></textarea>
                     <label for="descripcion">Descripción</label>
                 </div>
 
@@ -37,32 +37,33 @@
 
                 <div class="duplaBoton">
                     <button type="button" class="btn btn-primary" id="agregarProducto">Agregar</button>
-                    <button type="button" class="btn btn-danger" id="vaciarTabla">Vaciar tabla</button>
+                    <button type="button" class="btn btn-danger" id="vaciarTabla">Vaciar</button>
                 </div>
             </div>
         </form>
         <div class="carrito">
+            <h3 style="color: rgb(56, 125, 235); text-align: right;">Carrito</h3>
             <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Sub Total</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody id="carritoBody">
-                    <!-- Aquí se agregarán los productos seleccionados -->
-                </tbody>
+            <thead>
+            <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Sub Total</th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody id="carritoBody">
+                <!-- Aquí se agregarán los productos seleccionados -->
+            </tbody>
             </table>
             <div class="duplaBoton2">
-                <button id="realizarVenta" type="submit" class="btn btn-success">Realizar Venta</button>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"><h6>Total: $ <span id="total">0</span></h6></span>
-                </div>
+            <button id="realizarVenta" type="submit" class="btn btn-success">Realizar Venta</button>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><h6>Total: $ <span id="total">0</span></h6></span>
+            </div>
             </div>
         </div>
     </div>
