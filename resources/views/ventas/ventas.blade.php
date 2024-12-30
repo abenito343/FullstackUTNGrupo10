@@ -25,8 +25,12 @@
             <div class="input-group flex-nowrap">
                 <span class="input-group-text" id="addon-wrapping">Fecha</span>
                 <input type="date" name="fecha" class="form-control" aria-label="Fecha" aria-describedby="addon-wrapping">
-                <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
+            <div class="input-group flex-nowrap mt-2">
+                <span class="input-group-text" id="addon-wrapping">Total</span>
+                <input type="number" name="total" class="form-control" aria-label="Total" aria-describedby="addon-wrapping">
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Buscar</button>
         </form>
     </div>
     <div class="horizontal-line"></div>
@@ -37,8 +41,7 @@
             <th scope="col">ID</th>
             <th scope="col">Fecha</th>
             <th scope="col">Total</th>
-            <th scope="col">Ver Detalle</th>
-            <th scope="col">Imprimir Factura</th>
+            <th scope="col">Detalle</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +52,6 @@
                   <td>{{ $venta->fecha }}</td>
                   <td>${{ $venta->total }}</td>
                   <td><a href="{{ route('ventas.show', $venta->id) }}" class="btn btn-info">Ver Detalle</a></td>
-                  <td><a href="{{ route('ventas.show', $venta->id) }}" class="btn btn-secondary">Imprimir Factura</a></td>
               </tr>
           @endforeach
       </tbody>

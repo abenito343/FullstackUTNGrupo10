@@ -19,6 +19,10 @@ class VentasController extends Controller
             $query->whereDate('fecha', $request->fecha);
         }
 
+        if ($request->filled('total')) {
+            $query->where('total', $request->input('total'));
+        }
+
         if ($request->has('busqueda_nombre') && $request->busqueda_nombre != null) {
             $query->whereHas('usuario', function ($q) use ($request) {
                 $q->where('nombre', 'like', '%' . $request->input('busqueda_nombre') . '%')
@@ -30,7 +34,6 @@ class VentasController extends Controller
 
         return view('ventas.ventas', compact('ventas'));
     }
-
 
     public function ventas_admin(Request $request)
     {
