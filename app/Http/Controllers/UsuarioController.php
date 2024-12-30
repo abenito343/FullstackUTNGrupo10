@@ -56,7 +56,7 @@ class UsuarioController extends Controller
             [
             "required" => "Este campo es obligatorio",
             "password.confirmed" => "Las contraseñas no coinciden",
-            "dni.numeric" => "El DNI debe ser un numero",
+            "dni.numeric" => "El DNI debe ser un número",
             "dni.max" => "El DNI debe tener 8 digitos",
             "nickname.unique" => "El nickname ya existe"
             ]
