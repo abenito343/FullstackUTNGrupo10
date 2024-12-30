@@ -10,45 +10,48 @@ use App\Models\DetalleVenta;
 
 class VentasController extends Controller
 {
-    public function index2()
+    public function index(Request $request)
     {
-        $ventas = Venta::all();
+        $query = Venta::query();
+
+        if ($request->has('fecha') && $request->fecha != null) {
+            $query->whereDate('fecha', $request->fecha);
+        }
+
+        if ($request->has('busqueda_nombre') && $request->busqueda_nombre != null) {
+            $query->whereHas('usuario', function ($q) use ($request) {
+                $q->where('nombre', 'like', '%' . $request->input('busqueda_nombre') . '%')
+                  ->orWhere('apellido', 'like', '%' . $request->input('busqueda_nombre') . '%');
+            });
+        }
+
+        $ventas = $query->get();
+
         return view('ventas.ventas', compact('ventas'));
     }
 
-    public function index(Request $request)
-{
-    $query = Venta::query();
 
-    if ($request->has('fecha') && $request->fecha != null) {
-        $query->whereDate('fecha', $request->fecha);
-    }
 
-    $ventas = $query->get();
-
-    return view('ventas.ventas', compact('ventas'));
-}
     public function ventas_admin(Request $request)
     {
-        if ($request->has("busqueda")) {
-            $busqueda = $request->busqueda;
-
-            $ventas = DB::table('usuarios')
-                ->join('ventas', 'ventas.usuario_id', '=', 'usuarios.id')
-                ->select('usuarios.nombre', 'usuarios.apellido', 'usuarios.nickname', 'ventas.id', 'ventas.fecha', 'ventas.total')
-                ->where('ventas.fecha', '=', $busqueda)
-                ->get();
-        } else {
-            $ventas = DB::table('usuarios')
-                ->join('ventas', 'ventas.usuario_id', '=', 'usuarios.id')
-                ->select('usuarios.nombre', 'usuarios.apellido', 'usuarios.nickname', 'ventas.id', 'ventas.fecha', 'ventas.total')
-                ->get();
+        $query = DB::table('usuarios')
+            ->join('ventas', 'ventas.usuario_id', '=', 'usuarios.id')
+            ->select('usuarios.nombre', 'usuarios.apellido', 'usuarios.nickname', 'ventas.id', 'ventas.fecha', 'ventas.total');
+    
+        if ($request->has('busqueda') && $request->busqueda != null) {
+            $query->whereDate('ventas.fecha', $request->busqueda);
         }
-
-        $parametros=[
-            "ventas"=>$ventas
-        ];
-        return view('ventas.ventas_admin', $parametros);
+    
+        if ($request->has('busqueda_nombre') && $request->busqueda_nombre != null) {
+            $query->where(function ($q) use ($request) {
+                $q->where('usuarios.nombre', 'like', '%' . $request->busqueda_nombre . '%')
+                  ->orWhere('usuarios.apellido', 'like', '%' . $request->busqueda_nombre . '%');
+            });
+        }
+    
+        $ventas = $query->get();
+    
+        return view('ventas.ventas_admin', compact('ventas'));
     }
     
     public function detalle_venta_admin(Venta $venta)
