@@ -23,13 +23,13 @@
               <button type="submit" class="btn btn-primary">Buscar</button>
           </form>
       </div>
-      <div class="input-group flex-nowrap mt-3">
-          <form class="buscador" method="get" action="">
-              <label for="busqueda_nombre" class="input-group-text">Nombre Vendedor:</label>
-              <input type="text" class="form-control input-lg" id="busqueda_nombre" name="busqueda_nombre">
-              <button type="submit" class="btn btn-primary">Buscar</button>
-          </form>
-      </div>
+    <div class="input-group flex-nowrap mt-3">
+        <form class="buscador" method="get" action="">
+          <label for="busqueda_nombre" class="input-group-text">Nombre:</label>
+          <input type="text" class="form-control w-50" id="busqueda_nombre" name="busqueda_nombre">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
   </div>
   <div class="horizontal-line"></div>
   <table class="table">
