@@ -21,12 +21,13 @@
     </div>
     <div class="horizontal-line"></div>
     <div class="buscador">
-        <div class="input-group flex-nowrap">
-            <span class="input-group-text" id="addon-wrapping">Fecha</span>
-            <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-            <button type="button" class="btn btn-primary">Buscar</button>
-        </div>
-        
+        <form action="{{ route('ventas.index') }}" method="GET">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Fecha</span>
+                <input type="date" name="fecha" class="form-control" aria-label="Fecha" aria-describedby="addon-wrapping">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </form>
     </div>
     <div class="horizontal-line"></div>
     <table class="table">
@@ -46,7 +47,7 @@
                   <td></td>
                   <td>{{ $venta->id }}</td>
                   <td>{{ $venta->fecha }}</td>
-                  <td>{{ $venta->total }}</td>
+                  <td>${{ $venta->total }}</td>
                   <td><a href="{{ route('ventas.show', $venta->id) }}" class="btn btn-info">Ver Detalle</a></td>
                   <td><a href="{{ route('ventas.show', $venta->id) }}" class="btn btn-secondary">Imprimir Factura</a></td>
               </tr>

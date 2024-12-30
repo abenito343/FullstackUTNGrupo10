@@ -10,12 +10,24 @@ use App\Models\DetalleVenta;
 
 class VentasController extends Controller
 {
-    public function index()
+    public function index2()
     {
         $ventas = Venta::all();
         return view('ventas.ventas', compact('ventas'));
     }
 
+    public function index(Request $request)
+{
+    $query = Venta::query();
+
+    if ($request->has('fecha') && $request->fecha != null) {
+        $query->whereDate('fecha', $request->fecha);
+    }
+
+    $ventas = $query->get();
+
+    return view('ventas.ventas', compact('ventas'));
+}
     public function ventas_admin(Request $request)
     {
         if ($request->has("busqueda")) {

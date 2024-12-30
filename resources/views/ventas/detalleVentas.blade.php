@@ -35,7 +35,7 @@
                         <td>{{ $detalle->producto->nombre }}</td>
                         <td>{{ $detalle->cantidad }}</td>
                         <td>${{ $detalle->producto->precio }}</td>
-                        <td>${{ $detalle->subTotal }}</td>
+                        <td>${{ $detalle->cantidad * $detalle->producto->precio }}</td>
                     </tr>
                 @endforeach
             </tbody>
