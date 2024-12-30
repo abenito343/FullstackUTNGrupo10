@@ -59,9 +59,12 @@ class UsuarioController extends Controller
             "dni.numeric" => "El DNI debe ser un numero"
             ]
         );
-
+    
+        // Capitalizar la primera letra de nombre y apellido
+        $datos["nombre"] = ucfirst(strtolower($datos["nombre"]));
+        $datos["apellido"] = ucfirst(strtolower($datos["apellido"]));
         $datos["password"] = bcrypt($datos["password"]);
-
+    
         User::create($datos);
     
         return response()->redirectTo("/usuario")->with("success", "Se registro con exito!");
@@ -116,15 +119,19 @@ class UsuarioController extends Controller
             "dni.numeric" => "El DNI debe ser un numero"
             ]
         );
-
+    
+        // Capitalizar la primera letra de nombre y apellido
+        $datos["nombre"] = ucfirst(strtolower($datos["nombre"]));
+        $datos["apellido"] = ucfirst(strtolower($datos["apellido"]));
+    
         $usuario->nombre = $datos["nombre"];
         $usuario->apellido = $datos["apellido"];
         $usuario->dni = $datos["dni"];
         $usuario->nickname = $datos["nickname"];
         $usuario->rol = $datos["rol"];
-
+    
         $usuario->save();
-
+    
         return redirect("/usuario")->with("success", "Se actualizo el usuario de forma correcta");
     }
 
