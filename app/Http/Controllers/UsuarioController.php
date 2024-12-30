@@ -48,7 +48,7 @@ class UsuarioController extends Controller
         $datos = $request->validate([
             "nombre" => ['required'],
             "apellido" => ['required'],
-            "dni" => ['required', 'numeric'],
+            "dni" => ['required', 'numeric', 'max:8'],
             "nickname" => ['required', 'unique:usuarios,nickname'],
             "password" => ['required', 'confirmed'],
             "rol" => ['required']
@@ -57,6 +57,7 @@ class UsuarioController extends Controller
             "required" => "Este campo es obligatorio",
             "password.confirmed" => "Las contraseñas no coinciden",
             "dni.numeric" => "El DNI debe ser un numero",
+            "dni.max" => "El DNI debe tener 8 digitos",
             "nickname.unique" => "El nickname ya existe"
             ]
         );
