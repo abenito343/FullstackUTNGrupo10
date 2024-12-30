@@ -123,6 +123,7 @@ class ProductoController extends Controller
             return response()->json([
                 'descripcion' => $producto->descripcion,
                 'precio' => $producto->precio,
+                'stock' => $producto->stock,
                 'img'=>asset($producto->img)
             ]);
         }

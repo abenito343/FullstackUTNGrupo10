@@ -27,12 +27,16 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad" required>
+                    <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" id="cantidad" required min="1">
                     <label for="cantidad">Cantidad</label>
                 </div>
 
                 <div>
                     <label for="precio" class="form-label">Precio: $<span id="precio">0</span></label>
+                </div>
+
+                <div>
+                    <label for="stock" class="form-label">Stock disponible: <span id="stock">0</span></label>
                 </div>
 
                 <div class="duplaBoton">
@@ -74,8 +78,9 @@
     let carrito = [];
     let total = 0;
     let imagenProducto;
+    let stockDisponible = 0;
 
-    // Función para actualizar la descripción y precio según el producto seleccionado
+    // Función para actualizar la descripción, precio y stock según el producto seleccionado
     function actualizarDatos() {
         const productoId = document.getElementById('producto').value;
 
@@ -84,12 +89,16 @@
                 url: '/producto/' + productoId, // Ruta para obtener detalles del producto
                 method: 'GET',
                 success: function(data) {
-                    // Actualizar la descripción y el precio
+                    // Actualizar la descripción, el precio y el stock
                     console.log(data);
                     
                     $('#descripcion').val(data.descripcion);
                     $('#precio').text(data.precio);
-                    imagenProducto=data.img
+                    $('#stock').text(data.stock);
+                    stockDisponible = data.stock;
+                    imagenProducto = data.img;
+                    // Actualizar el atributo max del campo cantidad
+                    $('#cantidad').attr('max', stockDisponible);
                 },
                 error: function() {
                     alert('Error al obtener los detalles del producto.');
@@ -104,15 +113,19 @@
         const cantidad = document.getElementById('cantidad').value;
         
         if (select.value && cantidad > 0) {
-            const selectedOption = select.options[select.selectedIndex];
-            const productoId = selectedOption.value;
-            const nombreProducto = selectedOption.text;
-            const precio = parseFloat($('#precio').text());
-            const descripcion = $('#descripcion').val();
-            const subtotal = precio * cantidad;
-            // Agregar al carrito
-            carrito.push({ id: productoId, nombre: nombreProducto, descripcion, precio, cantidad, subtotal, imagenProducto });
-            actualizarCarrito();
+            if (cantidad <= stockDisponible) {
+                const selectedOption = select.options[select.selectedIndex];
+                const productoId = selectedOption.value;
+                const nombreProducto = selectedOption.text;
+                const precio = parseFloat($('#precio').text());
+                const descripcion = $('#descripcion').val();
+                const subtotal = precio * cantidad;
+                // Agregar al carrito
+                carrito.push({ id: productoId, nombre: nombreProducto, descripcion, precio, cantidad, subtotal, imagenProducto });
+                actualizarCarrito();
+            } else {
+                alert('Cantidad solicitada supera el stock disponible.');
+            }
         } else {
             alert('Selecciona un producto y una cantidad');
         }
@@ -155,9 +168,8 @@
         actualizarCarrito();
     });
 
-
-     // Función para realizar la venta
-     document.getElementById('realizarVenta').addEventListener('click', function() {
+    // Función para realizar la venta
+    document.getElementById('realizarVenta').addEventListener('click', function() {
         if (carrito.length > 0) {
             $.ajax({
                 url: '/ventas', // Ruta para guardar la venta
