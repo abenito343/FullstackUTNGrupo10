@@ -48,7 +48,7 @@ class UsuarioController extends Controller
         $datos = $request->validate([
             "nombre" => ['required'],
             "apellido" => ['required'],
-            "dni" => ['required', 'numeric', 'max:8'],
+            "dni" => ['required', 'numeric', 'digits:8'],
             "nickname" => ['required', 'unique:usuarios,nickname'],
             "password" => ['required', 'confirmed'],
             "rol" => ['required']
@@ -57,10 +57,11 @@ class UsuarioController extends Controller
             "required" => "Este campo es obligatorio",
             "password.confirmed" => "Las contraseñas no coinciden",
             "dni.numeric" => "El DNI debe ser un número",
-            "dni.max" => "El DNI debe tener 8 digitos",
+            "dni.digits" => "El DNI debe tener 8 dígitos",
             "nickname.unique" => "El nickname ya existe"
             ]
         );
+        
     
         // Capitalizar la primera letra de nombre y apellido
         $datos["nombre"] = ucfirst(strtolower($datos["nombre"]));
