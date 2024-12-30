@@ -12,7 +12,8 @@ class VentasController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Venta::query();
+        $user = auth()->user();
+        $query = Venta::where('usuario_id', $user->id);
 
         if ($request->has('fecha') && $request->fecha != null) {
             $query->whereDate('fecha', $request->fecha);
@@ -29,7 +30,6 @@ class VentasController extends Controller
 
         return view('ventas.ventas', compact('ventas'));
     }
-
 
 
     public function ventas_admin(Request $request)

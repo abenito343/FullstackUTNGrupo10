@@ -51,7 +51,7 @@
             <tr>
                 <td>{{ $producto->nombre }}</td>
                 <td>{{ $producto->descripcion }}</td>
-                <td>{{ $producto->precio }}</td>
+                <td>${{ $producto->precio }}</td>
                 <td>{{ $producto->stock }}</td>
                 <td><img src="{{ asset($producto->img) }}" alt="Imagen de {{ $producto->nombre }}" style="width: 100px; height: 100px; object-fit: cover;"></td>
                 <td>{{$producto->categoria->nombre}}</td>
